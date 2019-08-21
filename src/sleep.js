@@ -17,7 +17,6 @@ class Sleep {
        let dateObj = this.userSleepInfo.find(sleepInfo => sleepInfo.date === date)
        return dateObj[sleepProperty]
     }
-
 }
 
 if (typeof module !== 'undefined') {
