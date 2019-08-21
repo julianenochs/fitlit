@@ -3,7 +3,6 @@ let userRepository = new UserRepository(userData)
 let userInfo = userRepository.getUserData(randomId)
 let user = new User(userInfo)
 
-
 $(document).ready(() => {
     $('#splash-page-js').show();
     $('#main-page-js').hide();

@@ -23,12 +23,15 @@ class SleepRepository {
     }
 
     usersWhoSleptTheMost() {
-        
+        let sortedSleepers = this.sleepData.sort((a, b) => {
+        return b.hoursSlept - a.hoursSlept
+        })
+        if (sortedSleepers[0].hoursSlept === sortedSleepers[1].hoursSlept) {
+            return sortedSleepers[0].userID && sortedSleepers[1].userID
+        } else {
+            return sortedSleepers[0].userID
+        }
     }
-    // For a given day(identified by the date), 
-    // find the users who slept the most number of hours
-    // (one or more
-    //     if they tied)
 
     getUserInfo(id) {
         this.user = this.sleepData.filter(user => user.userID === id)

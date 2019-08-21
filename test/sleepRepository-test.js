@@ -62,4 +62,8 @@ describe('Sleep Repository', () => {
             }
         ])
     });
+
+    it('should return the users who slept the most', () => {
+        expect(sleepRepository.usersWhoSleptTheMost()).to.eql(16)
+    })
 });
