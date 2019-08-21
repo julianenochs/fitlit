@@ -1,7 +1,7 @@
 let randomId = Math.floor(Math.random() * 50 + 1)
 let userRepository = new UserRepository(userData)
-// let userInfo = userRepository.getUserData(randomId)
-// let user = new User(userInfo)
+let userInfo = userRepository.getUserData(randomId)
+let user = new User(userInfo)
 
 
 $(document).ready(() => {
@@ -15,5 +15,9 @@ $(document).ready(() => {
         $('#main-page-js').fadeIn(1000);
         $('#header-js').show();
     }
-    $('#user-info__display-js').text(user.name)
+    $('#user-name__display').text(user.name)
+    $('#user-address__display').text(user.address)
+    $('#user-email__display').text(user.email)
+    $('#user-stride__display').text(user.strideLength)
+    $('#user-step__display').text(user.dailyStepGoal)
 });

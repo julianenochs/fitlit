@@ -22,6 +22,14 @@ class SleepRepository {
         // for any week, not just the latest week
     }
 
+    usersWhoSleptTheMost() {
+        
+    }
+    // For a given day(identified by the date), 
+    // find the users who slept the most number of hours
+    // (one or more
+    //     if they tied)
+
     getUserInfo(id) {
         this.user = this.sleepData.filter(user => user.userID === id)
         return this.user
