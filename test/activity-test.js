@@ -28,7 +28,7 @@ describe("Activity", () => {
   });
 
   it("should reach their step goal", () => {
-    expect(activity.getStepGoalByDay()).to.equal()
+    expect(activity.getStepGoalByDay("2019/06/21")).to.equal(false);
   })
 
 });

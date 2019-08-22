@@ -19,9 +19,16 @@ class Activity {
       return this.averageMinutesActivePerWeek
   };
 
-  getStepGoalByDay() {
-    
-  }
+  getStepGoalByDay(date) {
+    let stepGoalDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
+    let numOfSteps = stepGoalDate.numSteps
+      if (numOfSteps > 10000) {
+        return true
+      } else {
+        return false
+      }
+    };
+
 
 }
 
