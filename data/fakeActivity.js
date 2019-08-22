@@ -169,3 +169,7 @@ const fakeActivity = [
         "flightsOfStairs": 6
     }
 ]
+
+if (typeof module !== 'undefined') {
+    module.exports = fakeActivity;
+  }
