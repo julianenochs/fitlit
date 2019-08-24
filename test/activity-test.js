@@ -16,7 +16,7 @@ describe("Activity", () => {
   });
 
   it("should be a function", () => {
-    expect(Activity).to.be.a("function")
+    expect(Activity).to.be.a("function");
   });
 
   it("should have a number of minutes active per day", () => {
@@ -24,12 +24,16 @@ describe("Activity", () => {
   });
 
   it("should have an average number of minutes active each week", () => {
-    expect(activity.getAverageMinutesActivePerWeek()).to.equal(202.43)
+    expect(activity.getAverageMinutesActivePerWeek()).to.equal(202.43);
   });
 
   it("should reach their step goal", () => {
     expect(activity.getStepGoalByDay("2019/06/21")).to.equal(false);
-  })
+  });
+
+  it("should track days step goal is passed", () => {
+    expect(activity.getDaysOverStepGoal()).to.eql(["2019/06/19"]);
+  });
 
 });
 

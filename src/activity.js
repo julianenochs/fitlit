@@ -2,7 +2,6 @@ class Activity {
   constructor(userActivityInformation) {
     this.userActivityInformation = userActivityInformation;
     this.averageMinutesActivePerWeek;
-
   }
 
   getMinutesActivePerDayByDate(date) {
@@ -28,6 +27,15 @@ class Activity {
         return false
       }
     };
+
+    getDaysOverStepGoal() {
+      let stepGoal = this.userActivityInformation.filter(activeObj => {
+        if(activeObj.numSteps > 10000) {
+          return activeObj.date
+        }
+      })
+      return stepGoal.map(activeObj => activeObj.date)
+    }
 
 
 }
