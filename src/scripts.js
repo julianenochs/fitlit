@@ -9,8 +9,6 @@ let activityRepository = new ActivityRepository(activityData);
 let userActivityInfo = activityRepository.getUserById(randomId);
 let activity = new Activity(userActivityInfo);
 
-
-
 $(document).ready(() => {
 	$('#splash-page-js').show();
 	$('#main-page-js').hide();
