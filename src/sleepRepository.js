@@ -33,7 +33,7 @@ class SleepRepository {
         }
     }
 
-    getUserInfo(id) {
+    getUserData(id) {
         this.user = this.sleepData.filter(user => user.userID === id)
         return this.user
     }
