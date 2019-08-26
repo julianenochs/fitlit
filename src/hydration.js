@@ -23,9 +23,9 @@ class Hydration {
       return hydrationObj.date === date
     });
     let ouncesByWeek = this.userHydrationInfo.splice(index - 6).map(hydrationObj => {
-      return `Date: ${hydrationObj.date}: ${hydrationObj.numOunces} `;
+      return ` Date: ${hydrationObj.date}: ${hydrationObj.numOunces}oz`;
     })
-    return ouncesByWeek.reverse()
+    return ouncesByWeek
   };
 
 }
