@@ -91,7 +91,7 @@ main {
     sans-serif;
 }
 
-.user-info__display {
+.grid {
     border: solid;
     width: fit-content;
 }
