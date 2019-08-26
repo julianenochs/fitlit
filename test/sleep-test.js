@@ -78,4 +78,8 @@ describe('Sleep', () => {
     it('should get the sleep quality given a specific date', () => {
         expect(sleep.getSleepDataByDate('2019/06/20', 'sleepQuality')).to.equal(1.2)
     });
+
+    it('should be able to get a users hours slept for an entire week', () => {
+        expect(sleep.getHoursSleptByWeek('2019/06/15')).to.eql([6.1, 4.1, 8, 10.4, 10.7, 9.3, 7.8])
+    })
 });

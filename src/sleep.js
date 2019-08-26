@@ -20,6 +20,18 @@ class Sleep {
        let dateObj = this.userSleepInfo.find(sleepInfo => sleepInfo.date === date)
        return dateObj[sleepProperty]
     }
+
+    getHoursSleptByWeek(date) {
+        let firstDateIndex = this.userSleepInfo.indexOf(user => user.date === date)
+        let week = this.userSleepInfo.splice(firstDateIndex - 6)
+        let sum = week.reduce((accumulator, user) => {
+            accumulator += user.hoursSlept
+            return accumulator
+        })
+    }
+    // For a user, how many hours slept each day over the course of a given week(7 days)
+    //  - you should be able to calculate this
+    // for any week, not just the latest week
 }
 
 if (typeof module !== 'undefined') {
