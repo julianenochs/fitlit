@@ -5,12 +5,12 @@ class UserRepository {
     this.allUserStepsAverage;
     this.allUserStairsClimbedAverage;
     }
-
-  getUserData(id) {
-    let userObject = this.data.find(user => user.id === id)
-    this.user = userObject
-      return this.user
-  };
+  
+    getUserById(id) {
+        let userObject = this.data.find(user => user.id === id)
+        this.user = userObject
+        return this.user
+    }
 
   getAllUserStepGoalAverage() {
     this.allUserStepsAverage = this.data.reduce((stepGoals, user) => {

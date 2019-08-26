@@ -17,7 +17,7 @@ beforeEach(() => {
     });
 
     it('should return a users information based on their ID', () => {
-        expect(userRepository.getUserData(1)).to.eql({
+        expect(userRepository.getUserById(1)).to.eql({
             "id": 1,
             "name": "Luisa Hane",
             "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",

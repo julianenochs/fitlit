@@ -1,24 +1,4 @@
-body {
-    margin: 0px;
-    height: 100vh;
-}
-
-main {
-    color: white;
-    font-family: 'Quantico',
-    sans-serif;
-    margin: 0px;
-}
-
-.main-page {
-    background-image: url('../src/images/80s-sunset.png');
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
-    opacity: 0.7;
-    width: 100%;
-}
-
+/* SPLASH PAGE */
 .splash-page {
     background: linear-gradient(#CDF5FE, #ADEEFE);
     display: flex;
@@ -31,7 +11,7 @@ main {
     background: #CDF5FE;
     color: #FE247A;
     font-family: 'Faster One',
-    cursive;
+        cursive;
     font-size: 5em;
     text-align: center;
 }
@@ -69,10 +49,32 @@ main {
     background-color: #FCDE2A;
     margin: 10px;
     font-family: 'Quantico',
-    sans-serif;
+        sans-serif;
     font-size: 1.3em;
     margin-left: 600px;
     width: 20%;
+}
+
+/* MAIN PAGE */
+body {
+    margin: 0px;
+    height: 100vh;
+}
+
+main {
+    color: white;
+    font-family: 'Quantico',
+    sans-serif;
+    margin: 0px;
+}
+
+.main-page {
+    background-image: url('../src/images/80s-sunset.png');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    opacity: 0.7;
+    width: 100%;
 }
 
 .header {

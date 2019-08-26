@@ -18,7 +18,7 @@ describe('Sleep Repository', () => {
     });
 
     it('should return all information for a user given their ID', () => {
-        expect(sleepRepository.getUserData(1)).to.eql([{
+        expect(sleepRepository.getUserById(1)).to.eql([{
                 userID: 1,
                 date: '2019/06/15',
                 hoursSlept: 6.1,
