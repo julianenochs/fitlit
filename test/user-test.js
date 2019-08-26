@@ -11,7 +11,7 @@ describe("User", () => {
 	
   beforeEach(() => {
     userRepository = new UserRepository(fakeUsers)
-    let userInfo = userRepository.getUserData(1)
+    let userInfo = userRepository.getUserById(1)
     user = new User(userInfo);
 	});
 

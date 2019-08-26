@@ -5,7 +5,7 @@ class UserRepository {
         this.allUserStepsAverage;
     }
 
-    getUserData(id) {
+    getUserById(id) {
         let userObject = this.data.find(user => user.id === id)
         this.user = userObject
         return this.user
