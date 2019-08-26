@@ -10,7 +10,7 @@ let sleepQuality;
 describe('Sleep', () => {
     beforeEach(() => {
         sleepRepository = new SleepRepository(fakeSleep)
-        let userSleepInfo = sleepRepository.getUserInfo(1)
+        let userSleepInfo = sleepRepository.getUserData(1)
         user1 = [{
                 userID: 1,
                 date: '2019/06/15',
