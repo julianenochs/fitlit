@@ -10,7 +10,7 @@ let userHydrationInfo = hydrationRepository.getUserById(randomId);
 let hydration = new Hydration(userHydrationInfo);
 let activityRepository = new ActivityRepository(activityData);
 let userActivityInfo = activityRepository.getUserById(randomId);
-let activity = new Activity(userActivityInfo);
+let activity = new Activity(userActivityInfo, user);
 
 function findTodaysDate() {
     let today = new Date();
@@ -20,6 +20,7 @@ function findTodaysDate() {
     today = mm + '-' + dd + '-' + yyyy;
     return `${today}`
 }
+
 
 $(document).ready(() => {
     $('#splash-page-js').show();
@@ -36,7 +37,6 @@ function hideSplash() {
     $('#main-page-js').fadeIn(1000);
     $('#header-js').show();
 }
-
 function submitDate() {
     date = $('#date__input-js').val();
     formattedDate = date.replace(/-/gi, "/");
@@ -64,8 +64,12 @@ console.log(hydrationChart)
 	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate('2019/06/15')}oz`);
 	$('#user-hydration-by-week__display-js').text(`Weekly Hydration: ${hydration.getOuncesByWeek('2019/06/15')}`);
 
-//********** Activity
-	$('#user-steps-today__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
+//*************Activity
+	$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
+	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate('2019/06/15')}`);
+	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay('2019/06/15')}`);
+	$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay('2019/06/15')}`);
+  $('#user-steps-today__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate('2019/06/15')}`);
 
 //********** Charts 

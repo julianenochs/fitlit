@@ -23,6 +23,7 @@ class Hydration {
     let index = user.findIndex(hydrationObj => {
       return hydrationObj.date === date
     });
+
     let ouncesByWeek = user.splice(index - 6).map(hydrationObj => {
       return `Date: ${hydrationObj.date}: ${hydrationObj.numOunces} `;
     });
