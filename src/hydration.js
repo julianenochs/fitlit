@@ -18,13 +18,14 @@ class Hydration {
       return ouncesPerDay.numOunces;
   };
 
-  getOuncesByWeek(date) {
-    let index = this.userHydrationInfo.findIndex(hydrationObj => {
+  getOuncesByWeek(id, date) {
+    let user = this.userHydrationInfo.filter(user => user.userID === id)
+    let index = user.findIndex(hydrationObj => {
       return hydrationObj.date === date
     });
-    let ouncesByWeek = this.userHydrationInfo.splice(index - 6).map(hydrationObj => {
+    let ouncesByWeek = user.splice(index - 6).map(hydrationObj => {
       return `Date: ${hydrationObj.date}: ${hydrationObj.numOunces} `;
-    })
+    });
     return ouncesByWeek.reverse()
   };
 

@@ -1,4 +1,4 @@
-let randomId = Math.floor(Math.random() * 50 + 1);
+let randomId = Math.floor(Math.random() * 50);
 let userRepository = new UserRepository(userData);
 let userInfo = userRepository.getUserById(randomId);
 let user = new User(userInfo);
@@ -29,6 +29,7 @@ $(document).ready(() => {
     $('#submit-date__button').click(submitDate);
     let date = $('#date__input-js').val();
     let formattedDate = date.replace(/-/gi, "/");
+
 function hideSplash() {
     $('#splash-page-js').fadeOut(2000);
     $('#splash-page-js').hide();
@@ -39,7 +40,7 @@ function hideSplash() {
 function submitDate() {
     date = $('#date__input-js').val();
     formattedDate = date.replace(/-/gi, "/");
-    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(formattedDate)
+    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate)
     userHydrationByWeekChart.update()
 }
 
