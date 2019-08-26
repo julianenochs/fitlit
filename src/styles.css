@@ -1,14 +1,16 @@
+body {
+    margin: 0px;
+    height: 100vh;
+}
+
 main {
     color: white;
     font-family: 'Quantico',
     sans-serif;
+    margin: 0px;
 }
 
 .main-page {
-    /* background-image: linear-gradient(
-        to top right,
-        #2B093A,
-        #410F59); */
     background-image: url('../src/images/80s-sunset.png');
     background-position: center;
     background-size: cover;
@@ -18,22 +20,23 @@ main {
 }
 
 .splash-page {
-    background: #CDF5FE;
+    background: linear-gradient(#CDF5FE, #ADEEFE);
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
 .splash-header {
+    animation: 1s ease-in 0s 1 slideInFromLeft;
     background: #CDF5FE;
     color: #FE247A;
     font-family: 'Faster One',
     cursive;
-    font-size: 4em;
+    font-size: 5em;
     text-align: center;
 }
 
-@keyframes slideInFromLeft {
+@keyframes slideInFromRight {
     0% {
         transform: translateX(100%);
     }
@@ -43,10 +46,20 @@ main {
     }
 }
 
+@keyframes slideInFromLeft {
+    100% {
+        transform: translateX(100%);
+    }
+
+    0% {
+        transform: translateX(0%);
+    }
+}
+
 .splash-img {
     align-content: center;
     margin: 0px 300px;
-    animation: 1s ease-in 0s 1 slideInFromLeft;
+    animation: 1s ease-in 0s 1 slideInFromRight;
 }
 
 .enter__button {
@@ -58,8 +71,8 @@ main {
     font-family: 'Quantico',
     sans-serif;
     font-size: 1.3em;
-    margin-left: 500px;
-    width: 30%;
+    margin-left: 600px;
+    width: 20%;
 }
 
 .header {
@@ -67,13 +80,18 @@ main {
     border-bottom: #1ADFED solid 2px;
     filter: hue-rotate(45deg);
     color: #FE247A;
-    font-family: 'Bungee Shade',
-    cursive;
+    font-family: 'Bungee Shade', cursive;
     text-align: center;
     font-size: 2em;
+    margin-top: -43px;
 }
 
 .main-date {
     font-family: 'Quantico',
     sans-serif;
+}
+
+.user-info__display {
+    border: solid;
+    width: fit-content;
 }

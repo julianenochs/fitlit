@@ -1,6 +1,8 @@
 class Sleep {
     constructor(userSleepInfo) {
         this.userSleepInfo = userSleepInfo
+        this.hoursSlept;
+        this.sleepQuality
     }
     
     getAverageSleepInformation(sleepProperty) {
@@ -10,6 +12,7 @@ class Sleep {
         }, 0)
         let average = allSleepData / this.userSleepInfo.length
         average = Number(average.toFixed(2))
+        sleepProperty === 'hoursSlept' ? this.hoursSlept = average : this.sleepQuality = average
         return average
     }
 
