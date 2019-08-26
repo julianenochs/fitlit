@@ -33,6 +33,9 @@ function hideSplash() {
     $('#main-page-js').fadeIn(1000);
     $('#header-js').show();
 }
+let date = $('#date__input-js').val()
+let formattedDate = date.replace(/-/gi, "/");
+let hydrationChart = hydration.getOuncesByWeek(formattedDate);
     $('#main-date-js').text(findTodaysDate());
     $('#user-name__display').text(user.name);
     $('#user-address__display').text(user.address);
@@ -46,13 +49,43 @@ function hideSplash() {
 	$('#user-stride__display').text(user.strideLength);
 	$('#user-step__display').text(user.dailyStepGoal);
 
-	//**********Hydration
+	//********** Hydration
 	$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
 	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate('2019/06/15')}oz`);
 	$('#user-hydration-by-week__display-js').text(`Weekly Hydration: ${hydration.getOuncesByWeek('2019/06/15')}`);
 	//function to 
 
-//*************Activity
+//********** Activity
 	$('#user-steps-today__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate('2019/06/15')}`);
+
+
+//********** Charts 
+let userHydrationByWeek = $('#user-hydration-by-week__display-js');
+let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
+    type: 'doughnut',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Water Drank (ounces)",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: hydrationChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Your Water Intake'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
 });
