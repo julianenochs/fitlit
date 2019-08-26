@@ -28,7 +28,15 @@ describe("Hydration", () => {
   });
 
   it("should have ounces consumed each day over a week", () => {
-    expect(hydration.getOuncesByWeek("2019/06/21")).to.eql([61, 53, 41, 53, 68, 55, 40]);
+    expect(hydration.getOuncesByWeek("2019/06/21")).to.eql([
+      ' Date: 2019/06/15: 40oz',
+      ' Date: 2019/06/16: 55oz',
+      ' Date: 2019/06/17: 68oz',
+      ' Date: 2019/06/18: 53oz',
+      ' Date: 2019/06/19: 41oz',
+      ' Date: 2019/06/20: 53oz',
+      ' Date: 2019/06/21: 61oz'
+    ]);
   });
   
 });
