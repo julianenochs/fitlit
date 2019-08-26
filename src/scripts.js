@@ -21,7 +21,6 @@ function findTodaysDate() {
     return `${today}`
 }
 
-
 $(document).ready(() => {
     $('#splash-page-js').show();
     $('#main-page-js').hide();
