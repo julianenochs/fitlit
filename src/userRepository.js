@@ -19,13 +19,6 @@ class UserRepository {
     }, 0) 
     return this.allUserStepsAverage / this.data.length;
   };
-
-  // getAllUserAverageStairsClimbed() {
-  //   this.allUserStairsClimbedAverage = this.data.reduce((flightsClimbed, user) => {
-  //     flightsClimbed += user.
-  //     return flightsClimbed
-  //   },0)
-	// };
 	
 }
 

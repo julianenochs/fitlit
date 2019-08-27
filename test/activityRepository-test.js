@@ -243,6 +243,18 @@ describe("Activity Repository", () => {
     expect(activityRepository.getUserById(16)).to.eql(user16)
   });
 
+  it("should have an average stairs climbed for all users", () => {
+    expect(activityRepository.getAverageStairsClimbedByDayAllUsers("2019/06/15")).to.equal(15.86)
+  });
+
+  it("should have an average steps taken for all users", () => {
+    expect(activityRepository.getAverageStepsTakenByDayAllUsers("2019/06/15")).to.equal(3369.14)
+  });
+
+  it("should have an average minutes active for all users", () => {
+    expect(activityRepository.getAverageMinutesActiveByDayAllUsers("2019/06/15")).to.equal(94.29)
+  })
+
 });
 
 
