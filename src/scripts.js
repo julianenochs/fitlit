@@ -41,7 +41,7 @@ $(document).ready(() => {
 function submitDate() {
     date = $('#date__input-js').val();
     formattedDate = date.replace(/-/gi, "/");
-    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
+    userHydrationByWeekChart.data.datasets[0] = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
 }
 
@@ -58,21 +58,18 @@ $('#user-email__display').text(user.email);
 $('#user-stride__display').text(user.strideLength);
 $('#user-step__display').text(user.dailyStepGoal);
 
-//********** Hydration
-// let hydrationChart = hydration.getOuncesByWeek(randomId, formattedDate);
+//********** Hydration **********
 	$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
 	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
-	// $('#user-hydration-by-week__display-js').text(`Weekly Hydration: ${hydration.getOuncesByWeek('2019/06/15')}`);
 
-//*************Activity
+//********** Activity **********
 	$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
 	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
 	$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
-    // $('#user-steps-today__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(randomId, findTodaysDate())}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
 
-//********** Charts 
+//********** Charts **********
 let userHydrationByWeek = $('#hydration-by-week');
 let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
     type: 'bar',
@@ -99,5 +96,6 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         responsive: true,
         maintainAspectRatio: false,
     }
+
 });
 });
