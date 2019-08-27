@@ -5,19 +5,23 @@ class Activity {
     this.averageMinutesActivePerWeek;
   }
 
-  getMinutesActivePerDayByDate(date) {
-    let minutesPerDay = this.userActivityInformation.find(activeObj => activeObj.date === date) 
+  getMinutesActivePerDayByDate(id, date) {
+    let user = this.userActivityInformation.filter(user => user.userID === id)
+    let minutesPerDay = user.find(activeObj => activeObj.date === date) 
       return minutesPerDay.minutesActive  
   };
 
-  getAverageMinutesActivePerWeek() {
-    let totalMinutes = this.userActivityInformation.reduce((minActive, activeObj) => {
+  getAverageMinutesActivePerWeek(date) {
+    let index = this.userActivityInformation.find(activeObj => {
+      return activeObj.date === date
+    });
+    let totalMinutes = this.userActivityInformation.splice(index - 6).reduce((minActive, activeObj) => {
       minActive += activeObj.minutesActive
         return minActive
     }, 0);
-    this.averageMinutesActivePerWeek = Number ((totalMinutes / this.userActivityInformation.length).toFixed(2))
-      return this.averageMinutesActivePerWeek
-  };
+    let averageMinutes = Number ((totalMinutes / 7).toFixed(2))
+      return averageMinutes
+  }
 
   getStepGoalByDay(date) {
     let stepGoalDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
@@ -38,13 +42,15 @@ class Activity {
     return stepGoal.map(activeObj => activeObj.date)
   };
 
-  getStepsPerDay(date) {
-    let stepsPerDayDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
+  getStepsPerDay(id, date) {
+    let user = this.userActivityInformation.filter(user => user.userID === id)
+    let stepsPerDayDate = user.find(activeObj => activeObj.date === date)
       return stepsPerDayDate.numSteps
   };
 
-  getDistanceBasedOnStepCountAndDay(date) {
-    let stepsPerDayDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
+  getDistanceBasedOnStepCountAndDay(id, date) {
+    let person = this.userActivityInformation.filter(user => user.userID === id)
+    let stepsPerDayDate = person.find(activeObj => activeObj.date === date)
       return Number((stepsPerDayDate.numSteps * this.strideLength / 5280).toFixed(2))
   };
 

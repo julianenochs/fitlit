@@ -19,7 +19,7 @@ describe("Activity", () => {
   beforeEach(() => {
     activityRepository = new ActivityRepository(fakeActivity);
     userRepository = new UserRepository(fakeUser);
-    let userInfo = userRepository.getUserData(16);
+    let userInfo = userRepository.getUserById(16);
     let userActivityInformation = activityRepository.getUserById(16);
     user = new User(userInfo);
     activity = new Activity(userActivityInformation, user);
@@ -30,11 +30,11 @@ describe("Activity", () => {
   });
 
   it("should have a number of minutes active per day", () => {
-    expect(activity.getMinutesActivePerDayByDate("2019/06/15")).to.equal(292);
+    expect(activity.getMinutesActivePerDayByDate(16, "2019/06/15")).to.equal(292);
   });
 
   it("should have an average number of minutes active each week", () => {
-    expect(activity.getAverageMinutesActivePerWeek()).to.equal(202.43);
+    expect(activity.getAverageMinutesActivePerWeek("2019/06/15")).to.equal(202.43);
   });
 
   it("should reach their step goal", () => {
@@ -46,11 +46,11 @@ describe("Activity", () => {
   });
 
   it("should have steps per day", () => {
-    expect(activity.getStepsPerDay("2019/06/15")).to.equal(6188)
+    expect(activity.getStepsPerDay(16, "2019/06/15")).to.equal(6188)
   });
 
-  it("should have a distance walked based on step count", () => {
-    expect(activity.getDistanceBasedOnStepCountAndDay("2019/06/15")).to.equal(4.57)
+  it.only("should have a distance walked based on step count", () => {
+    expect(activity.getDistanceBasedOnStepCountAndDay(16, "2019/06/15")).to.equal(4.57)
   });
 
   it("should have a stair climbing record", () => {

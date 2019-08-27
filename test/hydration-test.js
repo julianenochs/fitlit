@@ -28,7 +28,7 @@ describe("Hydration", () => {
   });
 
   it("should have ounces consumed each day over a week", () => {
-    expect(hydration.getOuncesByWeek("2019/06/21")).to.eql([
+    expect(hydration.getOuncesByWeek(16, "2019/06/21")).to.eql([
       ' Date: 2019/06/15: 40oz',
       ' Date: 2019/06/16: 55oz',
       ' Date: 2019/06/17: 68oz',
