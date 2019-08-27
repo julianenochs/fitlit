@@ -13,8 +13,9 @@ class Hydration {
       return this.averageOuncesConsumed;
   };
   
-  getOuncesByDate(date) {
-    let ouncesPerDay = this.userHydrationInfo.find(hydrationObj => hydrationObj.date === date );
+  getOuncesByDate(id, date) {
+    let user = this.userHydrationInfo.filter(user => user.userID === id)
+    let ouncesPerDay = user.find(hydrationObj => hydrationObj.date === date );
       return ouncesPerDay.numOunces;
   };
 

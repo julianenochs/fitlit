@@ -49,7 +49,7 @@ describe("Activity", () => {
     expect(activity.getStepsPerDay(16, "2019/06/15")).to.equal(6188)
   });
 
-  it.only("should have a distance walked based on step count", () => {
+  it("should have a distance walked based on step count", () => {
     expect(activity.getDistanceBasedOnStepCountAndDay(16, "2019/06/15")).to.equal(4.57)
   });
 
