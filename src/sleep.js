@@ -4,7 +4,7 @@ class Sleep {
         this.hoursSlept;
         this.sleepQuality
     }
-    
+
     getAverageSleepInformation(sleepProperty) {
         let allSleepData = this.userSleepInfo.reduce((accumulator, userObj) => {
             accumulator += userObj[sleepProperty]
@@ -27,11 +27,10 @@ class Sleep {
         let sum = week.reduce((accumulator, user) => {
             accumulator += user.hoursSlept
             return accumulator
-        })
+        }, 0)
+        let average = sum / week.length
+        return Number(average.toFixed(2))
     }
-    // For a user, how many hours slept each day over the course of a given week(7 days)
-    //  - you should be able to calculate this
-    // for any week, not just the latest week
 }
 
 if (typeof module !== 'undefined') {

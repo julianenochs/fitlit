@@ -15,12 +15,13 @@ class SleepRepository {
         return this.averageSleepQuality
     }
 
-    findUsersWithSleepQualityMoreThanThree(date) {
-        this.sleepData.filter(users => users.sleepQuality > 3)
-        // Find all users who average a sleep quality greater than 3
-        // for a given week(7 days) - you should be able to calculate this
-        // for any week, not just the latest week
-    }
+    findUsersWithGreatSleepQuality(date) {
+        let greatSleepers = this.sleepData.filter(user => user.sleepQuality >= 3)
+        // console.log(greatSleepers)
+        }
+
+// 
+
 
     usersWhoSleptTheMost() {
         let sortedSleepers = this.sleepData.sort((a, b) => {
