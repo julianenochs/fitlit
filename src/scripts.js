@@ -22,6 +22,8 @@ function findTodaysDate() {
 }
 
 $(document).ready(() => {
+    //  var audio = new Audio('images/gymnasty.mp3');
+    //  audio.play()
     $('#splash-page-js').show();
     $('#main-page-js').hide();
     $('#header-js').hide();
@@ -30,6 +32,48 @@ $(document).ready(() => {
     let date = $('#date__input-js').val();
     let formattedDate = date.replace(/-/gi, "/");
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
+
+    var $grid = $('.grid').packery({
+        itemSelector: '.grid-item',
+        columnWidth: 50,
+        rowHeight: 40,
+        gutter: 7,
+    });
+
+    var $draggable = $('.draggable').draggabilly({});
+
+    var $grid = $('.grid').packery({
+        itemSelector: '.grid-item',
+        columnWidth: 100
+    });
+
+    $grid.find('.grid-item').each(function (i, gridItem) {
+        var draggie = new Draggabilly(gridItem);
+        $grid.packery('bindDraggabillyEvents', draggie);
+    });
+
+
+    // let $grid = $('.grid').packery({
+    //     itemSelector: '.grid-item',
+    //     columnWidth: 100
+    // });
+
+    // $('.grid').packery({
+    //     itemSelector: ".grid-item",
+    //     gutter: 37,
+    //     // percentPosition: true,
+    //     columnWidth: 50,
+    //     rowHeight: 40
+    // });
+
+    // var $draggable = $('.draggable').draggabilly({
+
+    // })
+    // $grid.find('.grid-item').each(function (i, gridItem) {
+    //     let draggie = new Draggabilly(gridItem)
+    //     $grid.packery('bindDraggabillyEvents', draggie)
+    // });
+    // $draggable.draggabilly('enable')
 
     function hideSplash() {
     $('#splash-page-js').fadeOut(2000);

@@ -9,22 +9,22 @@
   </head>
   <body>
     <div class="splash-page" id="splash-page-js">
-      <p class="splash-header" id="splash-header-js">Welcome to Fit Lit</p>
+      <p class="splash-header" id="splash-header-js">Welcome to GymNasty</p>
       <img src="images/80sGuy.png" class="splash-img" alt="a cartoon of a man in an eighties style workout outfit slides across the screen flexing his bicep">
       <button class="enter__button" id="enter__button-js">Let's Get Fit!</button>
     </div>
     <header class="header" id="header-js">
-      <h1 class="main-heading" id="main-heading-js">Activity Tracker</h1>
+      <h1 class="main-heading" id="main-heading-js">Gym Nasty</h1>
       <time class="main-date" id="main-date-js">08 - 20 - 1989</time>
     </header>
-    <main>
-      <section class="main-page" id="main-page-js">
+    <main class="main-page" id="main-page-js">
+      <div class="grid">
         <label for="start">Start Date:</label>
         <input class="date__input" id="date__input-js" role="search" type="date" value="2019-07-11" min="2019-06-15" max="2019-09-22">
         <button id="submit-date__button" name="submit-date">Submit</button>
 
         <!-- USER INFORMATION DISPLAY -->
-        <section class="grid user-info__display" id="user-info__display-js">
+        <section class="grid-item" id="user-info__display-js">
           <div id="user-name__display"></div>
           <div id="user-address__display"></div>
           <div id="user-email__display"></div>
@@ -33,66 +33,74 @@
         </section>
 
         <!-- STEP GOAL -->
-        <section class="grid user-step-goal-comparison__display" id="user-step-goal-comparison__display-js">
+        <section class="draggable grid-item"
+          id="user-step-goal-comparison__display-js">
           User step comparison info...
         </section>
 
         <!-- HYDRATION -->
-        <section class="grid user-hydration-all-time__display" id="user-hydration-all-time__display-js">
+        <section class="draggable grid-item"
+          id="user-hydration-all-time__display-js">
           User hydration: avg oz all time...
         </section>
-        <section class="grid user-hydration-by-date__display" id="user-hydration-by-date__display-js">
+        <section class="draggable grid-item"
+          id="user-hydration-by-date__display-js">
           User hydration: oz drank by date...
         </section>
-        <div class="grid user-hydration-by-week__display" id="user-hydration-by-week__display-js">
-          <canvas id="hydration-by-week" width="400" height="400"></canvas>
-        </div>
+          <div class="grid-item chart" id="user-hydration-by-week__display-js">
+            <canvas id="hydration-by-week" width="400" height="400"></canvas>
+          </div>
 
         <!-- SLEEP -->
-        <section class="grid user-sleep-last-night__display" id="user-sleep-last-night__display-js">
+        <section class="draggable grid-item grid-item--width2" id="user-sleep-last-night__display-js">
           <p>Average Hours Slept:</p>
           User sleep: last night...
         </section>
-        <div class="grid user-sleep-by-week__display" id="user-sleep-by-week__display-js">
+        <div class="draggable grid-item" id="user-sleep-by-week__display-js">
           <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
-        <section class="grid user-sleep-average__display" id="user-sleep-average__display-js">
+        <section class="draggable grid-item" id="user-sleep-average__display-js">
           User sleep: average...
         </section>
+        
         <!-- ACTIVITY -->
-        <section class="grid user-steps-today__display" id="user-steps-today__display-js">
+        <section class="draggable grid-item" id="user-steps-today__display-js">
           User activity: steps today...
-        <section class="user-number-steps-today__display" id="user-number-steps-today__display-js">
+        </section>
+        <section class="draggable grid-item" id="user-number-steps-today__display-js">
           User activity: number of steps for latest day...
         </section>
-        <section class="user-steps-today__display" id="user-steps-goal__display-js">
+        <section class="grid-item draggable" id="user-steps-goal__display-js">
           User activity: steps goal  met today...
         </section>
-        <section class="user-distance-latest-day-step-count__display" id="user-distance-latest-day-step-count__display-js">
+        <section class="draggable grid-item"
+          id="user-distance-latest-day-step-count__display-js">
           User activity: distance walked for latest day based on step count...
         </section>
-        <section class="grid user-minutes-today__display" id="user-minutes-today__display-js">
+        <section class="draggable grid-item" id="user-minutes-today__display-js">
           User activity: minutes today...
         </section>
-        <section class="grid user-steps-by-mile__display" id="user-steps-by-mile__display-js">
+        <section class="draggable grid-item" id="user-steps-by-mile__display-js">
           User info: steps by mile...
         </section>
-        <section class="grid user-vs-all-users__display" id="user-vs-all-users__display-js">
+        <section class="draggable grid-item" id="user-vs-all-users__display-js">
           User info: user v user...
         </section>
-        <div class="grid step__chart" id="step__chart-js">
+        <div class="grid-item draggable" id="step__chart-js">
           <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
-        <div class="grid minutes-active__chart" id="minutes-active__chart">
+        <div class="draggable grid-item" id="minutes-active__chart">
           <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
-        <div class="grid stairs-climbed__chart" id="stairs-climbed__chart-js">
+        <div class="draggable grid-item" id="stairs-climbed__chart-js">
           <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
-      </section>
+        </div>
       </main>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+      <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+      <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
       <script type="text/javascript" src="../data/users.js"></script>
       <script type="text/javascript" src="../data/hydration.js"></script>
       <script type="text/javascript" src="../data/sleep.js"></script>

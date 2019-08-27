@@ -57,12 +57,14 @@
 
 /* MAIN PAGE */
 body {
+    display: grid;
     margin: 0px;
     height: 100vh;
 }
 
 main {
     color: white;
+    display: grid;
     font-family: 'Quantico',
     sans-serif;
     margin: 0px;
@@ -93,12 +95,54 @@ main {
     sans-serif;
 }
 
-.grid {
-    border: solid;
-    width: fit-content;
+.submit-date__button {
+    width: 5%;
 }
 
 .user-hydration-by-week__display {
     height: 400px;
     width: 400px;
+}
+
+.grid:after {
+    content: '';
+    clear: both;
+}
+
+.grid-item {
+    background-color: #69188E;
+    border: solid 4px;
+    border-radius: 5%;
+    float: left;
+    grid-auto-columns: 4;
+    grid-auto-rows: auto;
+    margin: 10px;
+    opacity: 0.8;
+    padding: 10px;
+    width: 29%;
+}
+
+.chart {
+    height: 400px;
+}
+
+.grid-item--width2 {
+    width: 200px;
+}
+
+.grid-item--height2 {
+    height: 200px;
+}
+
+.grid-item.is-dragging,
+.grid-item.is-positioning-post-drag {
+    background: rgb(59, 7, 143);
+    z-index: 2;
+}
+
+.packery-drop-placeholder {
+    outline: 3px dashed hsla(0, 0%, 0%, 0.5);
+    outline-offset: -6px;
+    transition: transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
 }
