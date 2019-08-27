@@ -97,3 +97,8 @@ main {
     border: solid;
     width: fit-content;
 }
+
+.user-hydration-by-week__display {
+    height: 400px;
+    width: 400px;
+}
