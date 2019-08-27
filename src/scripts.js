@@ -67,7 +67,16 @@ $('#user-step__display').text(user.dailyStepGoal);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
 	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
 	$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
-	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+    $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+
+// //****** User vs. All users *******
+$('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
+$('#all-users-average-step-today__display-tabl-js').text(`${activityRepository.getAverageStepsTakenByDayAllUsers(findTodaysDate())}`)
+$('#user-minutes-active-today__display-table-js').text(`${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`)
+$('#all-users-average-minutes-active-today__display-table-js').text(`${activityRepository.getAverageMinutesActiveByDayAllUsers(findTodaysDate())}`)
+$('#user-average-flights-today__display-table-js').text(`${activity.getStairFlightsByDay(randomId, findTodaysDate())}`)
+$('#all-users-average-flights-today__display-table-js').text(`${activityRepository.getAverageStairsClimbedByDayAllUsers(findTodaysDate())}`)
+
 
 //********** Charts **********
 let userHydrationByWeek = $('#hydration-by-week');

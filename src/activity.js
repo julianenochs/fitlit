@@ -62,8 +62,9 @@ class Activity {
       return stairRecord
   };
 
-  getStairFlightsByDay(date) {
-    let stairFlightsDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
+  getStairFlightsByDay(id, date) {
+    let user = this.userActivityInformation.filter(user => user.userID === id)
+    let stairFlightsDate = user.find(activeObj => activeObj.date === date)
       return stairFlightsDate.flightsOfStairs
   };
 
