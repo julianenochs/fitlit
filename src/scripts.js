@@ -17,10 +17,9 @@ function findTodaysDate() {
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
-    today = mm + '-' + dd + '-' + yyyy;
+    today = yyyy + '/' + mm + '/' + dd;
     return `${today}`
 }
-
 
 $(document).ready(() => {
     $('#splash-page-js').show();
@@ -30,18 +29,20 @@ $(document).ready(() => {
     $('#submit-date__button').click(submitDate);
     let date = $('#date__input-js').val();
     let formattedDate = date.replace(/-/gi, "/");
+    let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
 
-function hideSplash() {
+    function hideSplash() {
     $('#splash-page-js').fadeOut(2000);
     $('#splash-page-js').hide();
     $('#main-page-js').fadeIn(1000);
     $('#header-js').show();
 }
+
 function submitDate() {
     date = $('#date__input-js').val();
     formattedDate = date.replace(/-/gi, "/");
-    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate)
-    userHydrationByWeekChart.update()
+    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
+    userHydrationByWeekChart.update();
 }
 
 $('#main-date-js').text(findTodaysDate());
@@ -58,24 +59,23 @@ $('#user-stride__display').text(user.strideLength);
 $('#user-step__display').text(user.dailyStepGoal);
 
 //********** Hydration
-let hydrationChart = hydration.getOuncesByWeek(randomId, formattedDate);
-console.log(hydrationChart)
+// let hydrationChart = hydration.getOuncesByWeek(randomId, formattedDate);
 	$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
 	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate('2019/06/15')}oz`);
-	$('#user-hydration-by-week__display-js').text(`Weekly Hydration: ${hydration.getOuncesByWeek('2019/06/15')}`);
+	// $('#user-hydration-by-week__display-js').text(`Weekly Hydration: ${hydration.getOuncesByWeek('2019/06/15')}`);
 
 //*************Activity
 	$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate('2019/06/15')}`);
 	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay('2019/06/15')}`);
 	$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay('2019/06/15')}`);
-  $('#user-steps-today__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
+    $('#user-steps-today__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay('2019/06/15')}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate('2019/06/15')}`);
 
 //********** Charts 
-let userHydrationByWeek = $('#user-hydration-by-week__display-js');
+let userHydrationByWeek = $('#hydration-by-week');
 let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
-    type: 'doughnut',
+    type: 'bar',
     data: {
         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         datasets: [{

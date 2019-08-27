@@ -4,7 +4,7 @@ class Sleep {
         this.hoursSlept;
         this.sleepQuality
     }
-    
+
     getAverageSleepInformation(sleepProperty) {
         let allSleepData = this.userSleepInfo.reduce((accumulator, userObj) => {
             accumulator += userObj[sleepProperty]
@@ -19,6 +19,17 @@ class Sleep {
     getSleepDataByDate(date, sleepProperty) {
        let dateObj = this.userSleepInfo.find(sleepInfo => sleepInfo.date === date)
        return dateObj[sleepProperty]
+    }
+
+    getHoursSleptByWeek(date) {
+        let firstDateIndex = this.userSleepInfo.indexOf(user => user.date === date)
+        let week = this.userSleepInfo.splice(firstDateIndex - 6)
+        let sum = week.reduce((accumulator, user) => {
+            accumulator += user.hoursSlept
+            return accumulator
+        }, 0)
+        let average = sum / week.length
+        return Number(average.toFixed(2))
     }
 }
 
