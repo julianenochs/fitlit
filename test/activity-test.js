@@ -58,7 +58,7 @@ describe("Activity", () => {
   });
 
   it("should get flights of stairs by day", () => {
-    expect(activity.getStairFlightsByDay("2019/06/21")).to.equal(6)
+    expect(activity.getStairFlightsByDay(16, "2019/06/21")).to.equal(6)
   });
 
 });

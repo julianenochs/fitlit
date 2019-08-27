@@ -30,6 +30,7 @@ $(document).ready(() => {
     let date = $('#date__input-js').val();
     let formattedDate = date.replace(/-/gi, "/");
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
+    let minActiveChart = activity.getAverageMinutesActivePerWeek(randomId, findTodaysDate())
 
     function hideSplash() {
     $('#splash-page-js').fadeOut(2000);
@@ -43,6 +44,8 @@ function submitDate() {
     formattedDate = date.replace(/-/gi, "/");
     userHydrationByWeekChart.data.datasets[0] = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
+    // userActivityMinActiveByWeekChart.data.datasets[0] = activity.getAverageMinutesActivePerWeek(randomId, formattedDate);
+    // userActivityMinActiveByWeekChart.update();
 }
 
 $('#main-date-js').text(findTodaysDate());
@@ -65,7 +68,7 @@ $('#user-step__display').text(user.dailyStepGoal);
 //********** Activity **********
 	$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
 	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
-	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
+	// $('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
 	$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
     $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
 
@@ -107,4 +110,38 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
     }
 
 });
+
+let userActivityMinActiveByWeek = $('#minutes-active-by-week');
+let userActivityMinActiveByWeekChart = new Chart(userActivityMinActiveByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Minutes Active",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: minActiveChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Your Activity (min)'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+})
+
+
+
+
+
+
 });
