@@ -77,9 +77,28 @@
         <section class="grid user-steps-by-mile__display" id="user-steps-by-mile__display-js">
           User info: steps by mile...
         </section>
-        <section class="grid user-vs-all-users__display" id="user-vs-all-users__display-js">
-          User info: user v user...
-        </section>
+        <table class="grid user-vs-all-users__display" id="user-vs-all-users__display-js">
+          <tr>
+            <th></th>
+            <th>Your Daily</th>
+            <th>All Users Average</th>
+          </tr>
+          <tr>
+            <td>Number Of Steps:</td>
+            <td class="user-number-steps-today__display-table" id="user-number-steps-today__display-table-js">B</td>
+            <td class="all-users-average-step-today__display-table" id="all-users-average-step-today__display-tabl-js">C</td>
+          </tr>
+          <tr>
+            <td>Minutes Active:</td>
+            <td class="user-minutes-active-today__display-table" id="user-minutes-active-today__display-table-js">B</td>
+            <td class="all-users-average-minutes-active-today__display-table" id="all-users-average-minutes-active-today__display-table-js">C</td>
+          </tr>
+          <tr>
+            <td>Flights Crushed:</td>
+            <td class="user-average-flights-today__display-table" id="user-average-flights-today__display-table-js">B</td>
+            <td class="all-users-average-flights-today__display-table" id="all-users-average-flights-today__display-table-js">C</td>
+          </tr>
+        </table>
         <div class="grid step__chart" id="step__chart-js">
           <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
         </div>
