@@ -21,7 +21,7 @@ class Activity {
     }, 0);
     let averageMinutes = Number ((totalMinutes / 7).toFixed(2))
       return averageMinutes
-  }
+  };
 
   getStepGoalByDay(date) {
     let stepGoalDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
@@ -38,7 +38,7 @@ class Activity {
       if(activeObj.numSteps > 10000) {
         return activeObj.date
       }
-    })
+    });
     return stepGoal.map(activeObj => activeObj.date)
   };
 
@@ -60,12 +60,12 @@ class Activity {
     });
     let stairRecord = Math.max.apply(null, stairFlightsPerDay)
       return stairRecord
-  }
+  };
 
   getStairFlightsByDay(date) {
     let stairFlightsDate = this.userActivityInformation.find(activeObj => activeObj.date === date)
       return stairFlightsDate.flightsOfStairs
-  }
+  };
 
 }
 
