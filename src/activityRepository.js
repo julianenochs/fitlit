@@ -38,7 +38,6 @@ class ActivityRepository {
     let averageMinutesActive = Number((userMinutesTotal / 7).toFixed(2));
       return averageMinutesActive
   }
-
 }
 
 if (typeof module !== 'undefined') {
