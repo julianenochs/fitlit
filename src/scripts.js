@@ -18,7 +18,7 @@ function findTodaysDate() {
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd;
+		today = yyyy + '/' + mm + '/' + dd;
     return `${today}`
 }
 
@@ -68,10 +68,7 @@ $(document).ready(() => {
 		flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
 		flightsClimbedByWeekChart.update();
 	}
-	
-	function fireSubmitDate() {
-		$('#submit-date__button').click(submitDate());
-	}
+
 
 $('#main-date-js').text(findTodaysDate());
 $('#user-name__display').text(user.name);
@@ -93,12 +90,12 @@ $('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydratio
 $('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
 $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
 $('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
-$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
-$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+$('#user-steps-by-mile__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
 $('#user-redrocks-climbed').text(`Times you climbed Red Rocks this week: ${activity.getRedRocksTimesClimbed(randomId, findTodaysDate())}`);
 
 //********** Sleep **********
 $('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();
+
 
 // //****** User vs. All users *******
 $('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
