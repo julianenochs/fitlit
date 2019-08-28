@@ -75,6 +75,13 @@ class Activity {
     return week.map(user => user.numSteps)
   }
 
+  getWeeklyFlightsClimbed(id, date) {
+    let user = this.userActivityInformation.filter(user => user.userID === id)
+    let firstDayIndex = user.indexOf(el => el.date === date)
+    let week = user.splice(firstDayIndex - 6)
+    return week.map(user => user.flightsOfStairs)
+  }
+
 }
 
 if (typeof module !== 'undefined') {

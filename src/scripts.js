@@ -33,6 +33,7 @@ $(document).ready(() => {
     let formattedDate = date.replace(/-/gi, "/");
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
+    let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
 
     let $grid = $('.grid').packery({
         itemSelector: '.grid-item',
@@ -62,8 +63,10 @@ function submitDate() {
     formattedDate = date.replace(/-/gi, "/");
     userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
-    stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
+    stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
     stepCountByWeekChart.update();
+    flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
+    flightsClimbedByWeekChart.update();
 }
 
 $('#main-date-js').text(findTodaysDate());
@@ -158,5 +161,33 @@ let stepCountByWeekChart = new Chart(stepCountByWeek, {
         maintainAspectRatio: false,
     }
 
+});
+
+let flightsClimbedByWeek = $('#flights-climbed__chart');
+let flightsClimbedByWeekChart = new Chart(flightsClimbedByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Flights Climbed",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: flightsClimbedChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Flights Climbed Weekly'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 });
 });

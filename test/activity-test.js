@@ -66,6 +66,11 @@ describe("Activity", () => {
     expect(activity.getWeeklyStepCount(16, "2019/06/15")).to.eql(user16week)
   });
 
+  it("should get a weekly flights climbed for a user", () => {
+    let user16week = [32, 0, 16, 38, 43, 14, 6]
+      expect(activity.getWeeklyFlightsClimbed(16, "2019/06/15")).to.eql(user16week)
+  });
+
 });
 
 // For a user, a weekly view of their step count, flights of stairs climbed, 
