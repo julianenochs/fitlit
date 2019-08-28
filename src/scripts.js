@@ -22,8 +22,8 @@ function findTodaysDate() {
 }
 
 $(document).ready(() => {
-    //  var audio = new Audio('images/gymnasty.mp3');
-    //  audio.play()
+     var audio = new Audio('images/gymnasty.mp3');
+     audio.play();
     $('#splash-page-js').show();
     $('#main-page-js').hide();
     $('#header-js').hide();
@@ -35,21 +35,21 @@ $(document).ready(() => {
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
 
-    let $grid = $('.grid').packery({
+    $('.grid').packery({
         itemSelector: '.grid-item',
         gutter: 40,
-        // columnWidth: 100,
+        columnWidth: 100,
     });
 
     var $draggable = $('.draggable').draggabilly({
         axis: 'x'
     })
-
-    $grid.find('.grid-item').each(function (i, gridItem) {
-        let draggie = new Draggabilly(gridItem)
-        $grid.packery('bindDraggabillyEvents', draggie)
-    });
     $draggable.draggabilly('enable')
+
+    // $grid.find('.grid-item').each(function (i, gridItem) {
+        // let draggie = new Draggabilly(gridItem)
+        // $grid.packery('bindDraggabillyEvents', draggie)
+    // });
 
     function hideSplash() {
     $('#splash-page-js').fadeOut(2000);
