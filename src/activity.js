@@ -90,7 +90,6 @@ class Activity {
       flights += day.flightsOfStairs 
       return flights
     }, 0)
-    console.log(numberOfFlights)
     return Number((numberOfFlights / 12).toFixed(2))
   }
 

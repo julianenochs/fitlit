@@ -14,6 +14,7 @@ let activity = new Activity(userActivityInfo, user);
 
 function findTodaysDate() {
     let today = new Date();
+    console.log(today)
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
@@ -22,8 +23,8 @@ function findTodaysDate() {
 }
 
 $(document).ready(() => {
-     var audio = new Audio('images/gymnasty.mp3');
-     audio.play();
+    //  var audio = new Audio('images/gymnasty.mp3');
+    //  audio.play();
     $('#splash-page-js').show();
     $('#main-page-js').hide();
     $('#header-js').hide();
@@ -34,40 +35,43 @@ $(document).ready(() => {
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
-
+    
     // $('.grid').packery({
-    //     itemSelector: '.grid-item',
-    //     gutter: 40,
-    //     columnWidth: 100,
-    // });
-
-    // var $draggable = $('.draggable').draggabilly({
-    //     axis: 'x'
-    // })
-    // $draggable.draggabilly('enable')
-
-    // $grid.find('.grid-item').each(function (i, gridItem) {
-        // let draggie = new Draggabilly(gridItem)
-        // $grid.packery('bindDraggabillyEvents', draggie)
-    // });
-
-    function hideSplash() {
-    $('#splash-page-js').fadeOut(2000);
-    $('#splash-page-js').hide();
-    $('#main-page-js').fadeIn(1000);
-    $('#header-js').show();
-}
-
-function submitDate() {
-    date = $('#date__input-js').val();
-    formattedDate = date.replace(/-/gi, "/");
-    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
-    userHydrationByWeekChart.update();
-    stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
-    stepCountByWeekChart.update();
-    flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
-    flightsClimbedByWeekChart.update();
-}
+        //     itemSelector: '.grid-item',
+        //     gutter: 40,
+        //     columnWidth: 100,
+        // });
+        
+        // var $draggable = $('.draggable').draggabilly({
+            //     axis: 'x'
+            // $draggable.draggabilly('enable')
+            
+            // $grid.find('.grid-item').each(function (i, gridItem) {
+                // let draggie = new Draggabilly(gridItem)
+                // $grid.packery('bindDraggabillyEvents', draggie)
+                // });
+                
+	function hideSplash() {
+		$('#splash-page-js').fadeOut(2000);
+		$('#splash-page-js').hide();
+		$('#main-page-js').fadeIn(1000);
+		$('#header-js').show();
+	}
+	
+	function submitDate() {
+		date = $('#date__input-js').val();
+		formattedDate = date.replace(/-/gi, "/");
+		userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
+		userHydrationByWeekChart.update();
+		stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
+		stepCountByWeekChart.update();
+		flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
+		flightsClimbedByWeekChart.update();
+	}
+	
+	function fireSubmitDate() {
+		$('#submit-date__button').click(submitDate());
+	}
 
 $('#main-date-js').text(findTodaysDate());
 $('#user-name__display').text(user.name);
