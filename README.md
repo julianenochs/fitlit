@@ -21,4 +21,4 @@ Setting up the date range was a challenege, understanding how to transfer that d
 
 ## Desktop Screenshot:
 
-![Desktop_Comp]src/images/static_screenshot.png
+![Desktop_Comp](src/images/static_screenshot.png)
