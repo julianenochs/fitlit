@@ -117,12 +117,14 @@ main {
 
 .grid-item {
     background-color: #69188E;
-    border: solid 4px;
+    border: solid 6px;
     float: left;
-    margin: 10px;
+    font-size: 1.3em;
+    margin: 15px;
     opacity: 0.8;
     padding: 10px;
-    width: 250px;
+    text-align: center;
+    width: 330px;
 } 
 
 .weekly {

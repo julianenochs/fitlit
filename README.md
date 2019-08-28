@@ -1,82 +1,24 @@
-# FitLit Starter Kit
+# FitLit Starter Kit: Overview
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+Fitlit is an application used to track your habits in multiple areas of overall health. There are capabilities for tracking your hydration, a user can track their average ounces consumed vs their ounces consumed for the current day. A user can also track their activity levels. Things like step count, minutes active, and stairs climbed are all displayed for the user. The user will also have the ability choose a date range or individual day and view their data from that date. 
 
-## Setup
+## Technical Overview
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+This application uses a combination of different technologies
+  - HTML
+  - CSS
+  - Javascript
+  - jQuery
+  - Moca/chai 
 
-## Testing
+## Wins
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+Setting up the class structure was a challenege with this application. We spent a solid amount of time planning the structure out before actually putting our hands on the keys. We were able to come up with a structure that allowed us to shrink the data for testing and then implement with our larger data sets. 
 
-## Linting Your Code
+## Challenges
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+Setting up the date range was a challenege, understanding how to transfer that data to new charts and tracked activity boxs. This would be a good area for further development.  
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+## Desktop Screenshot:
 
-## Data Model
-
-**Users**
-
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
-
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+![Desktop_Comp](src/images/static_screenshot.png)

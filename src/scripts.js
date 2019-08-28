@@ -14,16 +14,17 @@ let activity = new Activity(userActivityInfo, user);
 
 function findTodaysDate() {
     let today = new Date();
+    console.log(today)
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd;
+		today = yyyy + '/' + mm + '/' + dd;
     return `${today}`
 }
 
 $(document).ready(() => {
-     var audio = new Audio('images/gymnasty.mp3');
-     audio.play();
+    //  var audio = new Audio('images/gymnasty.mp3');
+    //  audio.play();
     $('#splash-page-js').show();
     $('#main-page-js').hide();
     $('#header-js').hide();
@@ -35,34 +36,33 @@ $(document).ready(() => {
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
     let weeklySleepChart = sleep.getHoursSleptByWeek(randomId, findTodaysDate());
+
     // $('.grid').packery({
-    //     itemSelector: '.grid-item',
-    //     gutter: 40,
-    //     columnWidth: 100,
-    // });
-
-    // var $draggable = $('.draggable').draggabilly({
-    //     axis: 'x'
-    // })
-    // $draggable.draggabilly('enable')
-
-    // $grid.find('.grid-item').each(function (i, gridItem) {
-        // let draggie = new Draggabilly(gridItem)
-        // $grid.packery('bindDraggabillyEvents', draggie)
-    // });
-
-    function hideSplash() {
-    $('#splash-page-js').fadeOut(2000);
-    $('#splash-page-js').hide();
-    $('#main-page-js').fadeIn(1000);
-    $('#header-js').show();
-}
+        //     itemSelector: '.grid-item',
+        //     gutter: 40,
+        //     columnWidth: 100,
+        // });
+        
+        // var $draggable = $('.draggable').draggabilly({
+            //     axis: 'x'
+            // $draggable.draggabilly('enable')
+            
+            // $grid.find('.grid-item').each(function (i, gridItem) {
+                // let draggie = new Draggabilly(gridItem)
+                // $grid.packery('bindDraggabillyEvents', draggie)
+                // });
+                
+	function hideSplash() {
+		$('#splash-page-js').fadeOut(2000);
+		$('#splash-page-js').hide();
+		$('#main-page-js').fadeIn(1000);
+		$('#header-js').show();
+	}
 
 function submitDate() {
     date = $('#date__input-js').val();
     formattedDate = date.replace(/-/gi, "/");
-    console.log(formattedDate)
-    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
+    hydrationChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
     stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
     stepCountByWeekChart.update();
@@ -89,15 +89,18 @@ $('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydra
 $('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
 
 //********** Activity **********
-$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
+$('#user-steps-goal__display-js').text(`Step goal: ${activity.getStepGoalByDay(findTodaysDate())}!`);
 $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
 $('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
-$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
-$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+$('#user-steps-by-mile__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
 $('#user-redrocks-climbed').text(`Times you climbed Red Rocks this week: ${activity.getRedRocksTimesClimbed(randomId, findTodaysDate())}`);
 
 //********** Sleep **********
-$('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();
+$('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept'));
+$('#sleep-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'hoursSlept'));
+$('#sleep-quality-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'sleepQuality'));
+
+
 
 // //****** User vs. All users *******
 $('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
