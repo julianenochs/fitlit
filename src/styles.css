@@ -104,6 +104,9 @@ main {
     width: 400px;
 } 
 
+.grid {
+    height: 100vh;
+}
 .grid:after {
     content: ' ';
     clear: both;
