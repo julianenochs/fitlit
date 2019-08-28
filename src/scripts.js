@@ -35,16 +35,16 @@ $(document).ready(() => {
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
 
-    $('.grid').packery({
-        itemSelector: '.grid-item',
-        gutter: 40,
-        columnWidth: 100,
-    });
+    // $('.grid').packery({
+    //     itemSelector: '.grid-item',
+    //     gutter: 40,
+    //     columnWidth: 100,
+    // });
 
-    var $draggable = $('.draggable').draggabilly({
-        axis: 'x'
-    })
-    $draggable.draggabilly('enable')
+    // var $draggable = $('.draggable').draggabilly({
+    //     axis: 'x'
+    // })
+    // $draggable.draggabilly('enable')
 
     // $grid.find('.grid-item').each(function (i, gridItem) {
         // let draggie = new Draggabilly(gridItem)

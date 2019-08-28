@@ -19,20 +19,20 @@
     </header>
     <main class="main-page" id="main-page-js">
       <div class="grid">
-        <div class="grid-item draggable">
+
+      <!-- USER INFORMATION DISPLAY -->
+      <section class="grid-item draggable user" id="user-info__display-js">
+        <div id="user-name__display"></div>
+        <div id="user-address__display"></div>
+        <div id="user-email__display"></div>
+        <div id="user-stride__display"></div>
+        <div id="user-step__display"></div>
+      </section>
+      <div class="grid-item draggable">
           <label for="start">Start Date:</label>
           <input class="date__input" id="date__input-js" role="search" type="date" value="2019-07-11" min="2019-06-15" max="2019-09-22">
           <button id="submit-date__button" name="submit-date">Submit</button>
-        </div>
-
-        <!-- USER INFORMATION DISPLAY -->
-        <section class="grid-item draggable" id="user-info__display-js">
-          <div id="user-name__display"></div>
-          <div id="user-address__display"></div>
-          <div id="user-email__display"></div>
-          <div id="user-stride__display"></div>
-          <div id="user-step__display"></div>
-        </section>
+      </div>
 
         <!-- STEP GOAL -->
         <section class="draggable grid-item"
@@ -49,29 +49,17 @@
           id="user-hydration-by-date__display-js">
           User hydration: oz drank by date...
         </section>
-          <div class="grid-item draggable chart" id="user-hydration-by-week__display-js">
-            <canvas id="hydration-by-week" width="400" height="400"></canvas>
-          </div>
 
         <!-- SLEEP -->
-        <section class="draggable grid-item grid-item--width2" id="user-sleep-last-night__display-js">
+        <section class="draggable grid-item grid-item--width2">
           <p>Average Hours Slept:</p>
-          User sleep: last night...
+          <p id="user-sleep-last-night__display-js" > ... </p>
         </section>
-        <div class="draggable grid-item" id="user-sleep-by-week__display-js">
-          <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-        </div>
         <section class="draggable grid-item" id="user-sleep-average__display-js">
           User sleep: average...
         </section>
-        
+
         <!-- ACTIVITY -->
-         <div class="grid-item draggable chart" id="step__chart-js">
-           <canvas id="step__chart" width="400" height="400"></canvas>
-         </div>
-         <div class="draggable grid-item chart" id="stairs-climbed__chart-js">
-           <canvas id="flights-climbed__chart" width="400" height="400"></canvas>
-         </div>
         <section class="draggable grid-item" id="user-steps-today__display-js">
           User activity: steps today...
         </section>
@@ -94,8 +82,10 @@
         <section class="draggable grid-item" id="user-redrocks-climbed">
             User activity: times up RedRocks
           </section>
-        <div class="grid-item draggable" id="step__chart-js">
-        <table class="grid user-vs-all-users__display" id="user-vs-all-users__display-js">
+
+          <!-- TABLE -->
+            <div class="grid-item draggable" id="step__chart-js">
+        <table class="user-vs-all-users__display" id="user-vs-all-users__display-js">
           <tr>
             <th></th>
             <th>Your Daily</th>
@@ -117,9 +107,23 @@
             <td class="all-users-average-flights-today__display-table" id="all-users-average-flights-today__display-table-js">C</td>
           </tr>
         </table>
-        <div class="draggable grid-item" id="minutes-active__chart">
+        <!-- <div class="draggable grid-item" id="minutes-active__chart">
           <canvas id="minutes-active-chart" width="400" height="400"></canvas>
+        </div> -->
         </div>
+
+        <!-- CHARTS -->
+        <div class="draggable weekly">
+          <h2>Weekly Stats</h2>
+          <div class="draggable chart" id="user-hydration-by-week__display-js">
+            <canvas id="hydration-by-week" width="400" height="400"></canvas>
+          </div>
+          <div class="draggable chart" id="step__chart-js">
+            <canvas id="step__chart" width="400" height="400"></canvas>
+          </div>
+          <div class="draggable chart" id="stairs-climbed__chart-js">
+            <canvas id="flights-climbed__chart" width="400" height="400"></canvas>
+          </div>
         </div>
       </main>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
