@@ -6,10 +6,10 @@ class UserRepository {
     this.allUserStairsClimbedAverage;
     }
   
-    getUserById(id) {
-        let userObject = this.data.find(user => user.id === id)
-        this.user = userObject
-        return this.user
+  getUserById(id) {
+    let userObject = this.data.find(user => user.id === id)
+    this.user = userObject
+      return this.user
     }
 
   getAllUserStepGoalAverage() {
@@ -19,7 +19,6 @@ class UserRepository {
     }, 0) 
     return this.allUserStepsAverage / this.data.length;
   };
-	
 }
 
 if (typeof module !== 'undefined') {

@@ -92,7 +92,6 @@ class Activity {
     }, 0)
     return Number((numberOfFlights / 12).toFixed(2))
   }
-
 }
 
 if (typeof module !== 'undefined') {
