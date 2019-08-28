@@ -21,15 +21,11 @@ class Sleep {
        return dateObj[sleepProperty]
     }
 
-    getHoursSleptByWeek(date) {
-        let firstDateIndex = this.userSleepInfo.indexOf(user => user.date === date)
-        let week = this.userSleepInfo.splice(firstDateIndex - 6)
-        let sum = week.reduce((accumulator, user) => {
-            accumulator += user.hoursSlept
-            return accumulator
-        }, 0)
-        let average = sum / week.length
-        return Number(average.toFixed(2))
+    getHoursSleptByWeek(id, date) {
+        let user = this.userSleepInfo.filter(user => user.userID === id)
+        let firstDateIndex = user.indexOf(user => user.date === date)
+        let week = this.userSleepInfo.splice(firstDateIndex - 6).map(user => user.hoursSlept)
+        return week
     }
 
     // bestSleepQuality(date) {

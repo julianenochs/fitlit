@@ -34,7 +34,7 @@ $(document).ready(() => {
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
-
+    let weeklySleepChart = sleep.getHoursSleptByWeek(randomId, findTodaysDate());
     // $('.grid').packery({
     //     itemSelector: '.grid-item',
     //     gutter: 40,
@@ -60,6 +60,7 @@ $(document).ready(() => {
 
 function submitDate() {
     date = $('#date__input-js').val();
+    console.log(date)
     formattedDate = date.replace(/-/gi, "/");
     userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
@@ -67,6 +68,7 @@ function submitDate() {
     stepCountByWeekChart.update();
     flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
     flightsClimbedByWeekChart.update();
+    userSleepByWeekChart.data.datasets[0].data = sleep.getHoursSleptByWeek(randomId, formattedDate)
 }
 
 $('#main-date-js').text(findTodaysDate());
@@ -113,7 +115,7 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         datasets: [{
             label: "Water Drank (ounces)",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
             data: hydrationChart,
         }]
     },
@@ -142,7 +144,7 @@ let stepCountByWeekChart = new Chart(stepCountByWeek, {
         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         datasets: [{
             label: "Steps Taken Daily",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
             data: stepCountChart,
         }]
     },
@@ -171,7 +173,7 @@ let flightsClimbedByWeekChart = new Chart(flightsClimbedByWeek, {
         labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         datasets: [{
             label: "Flights Climbed",
-            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
             data: flightsClimbedChart,
         }]
     },
@@ -190,5 +192,34 @@ let flightsClimbedByWeekChart = new Chart(flightsClimbedByWeek, {
         responsive: true,
         maintainAspectRatio: false,
     }
+});
+
+let userSleepByWeek = $('#sleep-by-week');
+let userSleepByWeekChart = new Chart(userSleepByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Hours Slept",
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+            data: weeklySleepChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Hours Slept This Week'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+
 });
 });
