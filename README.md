@@ -20,3 +20,5 @@ Setting up the class structure was a challenege with this application. We spent 
 Setting up the date range was a challenege, understanding how to transfer that data to new charts and tracked activity boxs. This would be a good area for further development.  
 
 ## Desktop Screenshot:
+
+![Desktop_Comp]src/images/static_screenshot.png
