@@ -91,6 +91,7 @@ $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getM
 $('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
 $('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
 $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+$('#user-redrocks-climbed').text(`Times you climbed Red Rocks this week: ${activity.getRedRocksTimesClimbed(randomId, findTodaysDate())}`);
 
 //********** Sleep **********
 $('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();

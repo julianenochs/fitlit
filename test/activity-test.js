@@ -58,7 +58,7 @@ describe("Activity", () => {
   });
 
   it("should get flights of stairs by day", () => {
-    expect(activity.getStairFlightsByDay("2019/06/21")).to.equal(6)
+    expect(activity.getStairFlightsByDay(16, "2019/06/21")).to.equal(6)
   });
 
   it("should get a weekly step count for a user", () => {
@@ -69,6 +69,10 @@ describe("Activity", () => {
   it("should get a weekly flights climbed for a user", () => {
     let user16week = [32, 0, 16, 38, 43, 14, 6]
       expect(activity.getWeeklyFlightsClimbed(16, "2019/06/15")).to.eql(user16week)
+  });
+
+  it("should have a amount of Red Rocks climbed", () => {
+    expect(activity.getRedRocksTimesClimbed(16, "2019/06/15")).to.equal(12.42)
   });
 
 });
