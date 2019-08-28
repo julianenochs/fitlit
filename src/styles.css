@@ -102,10 +102,10 @@ main {
 .user-hydration-by-week__display {
     height: 400px;
     width: 400px;
-}
+} 
 
 .grid:after {
-    content: '';
+    content: ' ';
     clear: both;
 }
 
@@ -114,24 +114,14 @@ main {
     border: solid 4px;
     border-radius: 5%;
     float: left;
-    grid-auto-columns: 4;
-    grid-auto-rows: auto;
     margin: 10px;
     opacity: 0.8;
     padding: 10px;
-    width: 29%;
-}
+    width: 25%;
+} 
 
 .chart {
     height: 400px;
-}
-
-.grid-item--width2 {
-    width: 200px;
-}
-
-.grid-item--height2 {
-    height: 200px;
 }
 
 .grid-item.is-dragging,
@@ -145,4 +135,4 @@ main {
     outline-offset: -6px;
     transition: transform 0.2s;
     -webkit-transition: -webkit-transform 0.2s;
-}
+} 

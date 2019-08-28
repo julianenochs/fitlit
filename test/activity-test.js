@@ -61,5 +61,14 @@ describe("Activity", () => {
     expect(activity.getStairFlightsByDay("2019/06/21")).to.equal(6)
   });
 
+  it("should get a weekly step count for a user", () => {
+    let user16week = [6188, 4496, 7385, 9351, 14692, 7686, 2495]
+    expect(activity.getWeeklyStepCount(16, "2019/06/15")).to.eql(user16week)
+  });
+
 });
+
+// For a user, a weekly view of their step count, flights of stairs climbed, 
+// and minutes active
+
 
