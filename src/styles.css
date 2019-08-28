@@ -115,7 +115,7 @@ main {
 .grid-item {
     background-color: #69188E;
     border: solid 4px;
-    border-radius: 5%;
+    /* border-radius: 5%; */
     float: left;
     margin: 10px;
     opacity: 0.8;
