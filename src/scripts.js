@@ -100,8 +100,6 @@ $('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('h
 $('#sleep-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'hoursSlept'));
 $('#sleep-quality-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'sleepQuality'));
 
-
-
 // //****** User vs. All users *******
 $('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
 $('#all-users-average-step-today__display-tabl-js').text(`${activityRepository.getAverageStepsTakenByDayAllUsers(findTodaysDate())}`)
