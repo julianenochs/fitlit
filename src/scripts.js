@@ -95,6 +95,8 @@ $('#user-redrocks-climbed').text(`Times you climbed Red Rocks this week: ${activ
 
 //********** Sleep **********
 $('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();
+$('#sleep-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'hoursSlept'));
+$('#sleep-quality-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'sleepQuality'));
 
 
 // //****** User vs. All users *******
