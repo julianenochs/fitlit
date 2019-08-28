@@ -32,48 +32,23 @@ $(document).ready(() => {
     let date = $('#date__input-js').val();
     let formattedDate = date.replace(/-/gi, "/");
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
+    let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
 
-    var $grid = $('.grid').packery({
+    let $grid = $('.grid').packery({
         itemSelector: '.grid-item',
-        columnWidth: 50,
-        rowHeight: 40,
-        gutter: 7,
+        gutter: 40,
+        // columnWidth: 100,
     });
 
-    var $draggable = $('.draggable').draggabilly({});
-
-    var $grid = $('.grid').packery({
-        itemSelector: '.grid-item',
-        columnWidth: 100
-    });
+    var $draggable = $('.draggable').draggabilly({
+        axis: 'x'
+    })
 
     $grid.find('.grid-item').each(function (i, gridItem) {
-        var draggie = new Draggabilly(gridItem);
-        $grid.packery('bindDraggabillyEvents', draggie);
+        let draggie = new Draggabilly(gridItem)
+        $grid.packery('bindDraggabillyEvents', draggie)
     });
-
-
-    // let $grid = $('.grid').packery({
-    //     itemSelector: '.grid-item',
-    //     columnWidth: 100
-    // });
-
-    // $('.grid').packery({
-    //     itemSelector: ".grid-item",
-    //     gutter: 37,
-    //     // percentPosition: true,
-    //     columnWidth: 50,
-    //     rowHeight: 40
-    // });
-
-    // var $draggable = $('.draggable').draggabilly({
-
-    // })
-    // $grid.find('.grid-item').each(function (i, gridItem) {
-    //     let draggie = new Draggabilly(gridItem)
-    //     $grid.packery('bindDraggabillyEvents', draggie)
-    // });
-    // $draggable.draggabilly('enable')
+    $draggable.draggabilly('enable')
 
     function hideSplash() {
     $('#splash-page-js').fadeOut(2000);
@@ -85,8 +60,10 @@ $(document).ready(() => {
 function submitDate() {
     date = $('#date__input-js').val();
     formattedDate = date.replace(/-/gi, "/");
-    userHydrationByWeekChart.data.datasets[0] = hydration.getOuncesByWeek(randomId, formattedDate);
+    userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
+    stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate)
+    stepCountByWeekChart.update();
 }
 
 $('#main-date-js').text(findTodaysDate());
@@ -95,7 +72,6 @@ $('#user-address__display').text(user.address);
 $('#user-email__display').text(user.email);
 $('#user-stride__display').text(user.strideLength);
 $('#user-step__display').text(user.dailyStepGoal);
-$('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();
 $('#user-name__display').text(user.name);
 $('#user-address__display').text(user.address);
 $('#user-email__display').text(user.email);
@@ -103,15 +79,18 @@ $('#user-stride__display').text(user.strideLength);
 $('#user-step__display').text(user.dailyStepGoal);
 
 //********** Hydration **********
-	$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
-	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
+$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
+$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
 
 //********** Activity **********
-	$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
-	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
-	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
-	$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
-    $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
+$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
+$('#user-distance-lasest-day-step-count__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
+$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+
+//********** Sleep **********
+$('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();
 
 // //****** User vs. All users *******
 $('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
@@ -138,6 +117,35 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         title: {
             display: true,
             text: 'Your Water Intake'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+
+});
+
+let stepCountByWeek = $('#step__chart');
+let stepCountByWeekChart = new Chart(stepCountByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Steps Taken Daily",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: stepCountChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Your Steps This Week'
         },
         scales: {
             yAxes: [{
