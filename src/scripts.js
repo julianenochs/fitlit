@@ -32,6 +32,7 @@ $(document).ready(() => {
     let date = $('#date__input-js').val();
     let formattedDate = date.replace(/-/gi, "/");
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
+    let activieMinChart = activity.getAverageMinutesActivePerWeek(randomId, findTodaysDate())
 
     var $grid = $('.grid').packery({
         itemSelector: '.grid-item',
@@ -87,6 +88,8 @@ function submitDate() {
     formattedDate = date.replace(/-/gi, "/");
     userHydrationByWeekChart.data.datasets[0] = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
+    userActiveMinutesWeekChart.data.datasets[0] = activity.getAverageMinutesActivePerWeek(randomId, findTodaysDate());
+    userActiveMinutesWeekChart.update();
 }
 
 $('#main-date-js').text(findTodaysDate());
@@ -149,6 +152,35 @@ let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         responsive: true,
         maintainAspectRatio: false,
     }
-
 });
+
+let userActiveMinutesWeek = $('#minutes-active-chart');
+let userActiveMinutesWeekChart = new Chart(userActiveMinutesWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Water Drank (ounces)",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
+            data: activieMinChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Your Water Intake'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+
 });

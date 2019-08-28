@@ -11,8 +11,9 @@ class Activity {
       return minutesPerDay.minutesActive  
   };
 
-  getAverageMinutesActivePerWeek(date) {
-    let index = this.userActivityInformation.find(activeObj => {
+  getAverageMinutesActivePerWeek(id, date) {
+    let user = this.userActivityInformation.filter(user => user.userID === id)
+    let index = user.find(activeObj => {
       return activeObj.date === date
     });
     let totalMinutes = this.userActivityInformation.splice(index - 6).reduce((minActive, activeObj) => {

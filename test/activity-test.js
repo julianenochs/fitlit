@@ -34,7 +34,7 @@ describe("Activity", () => {
   });
 
   it("should have an average number of minutes active each week", () => {
-    expect(activity.getAverageMinutesActivePerWeek("2019/06/15")).to.equal(202.43);
+    expect(activity.getAverageMinutesActivePerWeek(16, "2019/06/15")).to.equal(202.43);
   });
 
   it("should reach their step goal", () => {
@@ -58,7 +58,7 @@ describe("Activity", () => {
   });
 
   it("should get flights of stairs by day", () => {
-    expect(activity.getStairFlightsByDay("2019/06/21")).to.equal(6)
+    expect(activity.getStairFlightsByDay(16, "2019/06/21")).to.equal(6)
   });
 
 });
