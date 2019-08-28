@@ -82,6 +82,18 @@ class Activity {
     return week.map(user => user.flightsOfStairs)
   }
 
+  getRedRocksTimesClimbed(id, date) {
+    let user = this.userActivityInformation.filter(user => user.userID === id)
+    let flightsDate = user.indexOf(activeObj => activeObj.date === date)
+    let week = user.splice(flightsDate - 6)
+    let numberOfFlights = week.reduce((flights, day) => {
+      flights += day.flightsOfStairs 
+      return flights
+    }, 0)
+    console.log(numberOfFlights)
+    return Number((numberOfFlights / 12).toFixed(2))
+  }
+
 }
 
 if (typeof module !== 'undefined') {
