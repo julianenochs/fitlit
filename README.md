@@ -11,3 +11,10 @@ This application uses a combination of different technologies
   - jQuery
   - Moca/chai 
 
+## Wins
+
+Setting up the class structure was a challenege with this application. We spent a solid amount of time planning the structure out before actually putting our hands on the keys. We were able to come up with a structure that allowed us to shrink the data for testing and then implement with our larger data sets. 
+
+## Challenges
+
+Setting up the date range was a challenege, understanding how to transfer that data to new charts and tracked activity boxs. This would be a good area for further development.  
