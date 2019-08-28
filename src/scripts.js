@@ -60,8 +60,8 @@ $(document).ready(() => {
 
 function submitDate() {
     date = $('#date__input-js').val();
-    console.log(date)
     formattedDate = date.replace(/-/gi, "/");
+    console.log(formattedDate)
     userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
     userHydrationByWeekChart.update();
     stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
@@ -69,6 +69,7 @@ function submitDate() {
     flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
     flightsClimbedByWeekChart.update();
     userSleepByWeekChart.data.datasets[0].data = sleep.getHoursSleptByWeek(randomId, formattedDate)
+    userSleepByWeekChart.update();
 }
 
 $('#main-date-js').text(findTodaysDate());
