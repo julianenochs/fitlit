@@ -15,7 +15,7 @@ class Sleep {
         sleepProperty === 'hoursSlept' ? this.hoursSlept = average : this.sleepQuality = average
         return average
     }
-
+  
     getSleepDataByDate(id, date, sleepProperty) {
         let user = this.userSleepInfo.filter(user => user.userID === id)
         let dateObj = user.find(sleepInfo => sleepInfo.date === date)

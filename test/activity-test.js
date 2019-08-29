@@ -1,14 +1,11 @@
 const chai = require("chai");
 const expect = chai.expect;
-
 const Activity = require("../src/activity");
 const ActivityRepository = require("../src/activityRepository");
 const fakeActivity = require("../data/fakeActivity");
 const UserRepository = require("../src/userRepository");
 const User = require("../src/user");
 const fakeUser = require("../data/fakeUsers")
-
-
 let activityRepository;
 let userRepository;
 let activity;
@@ -74,10 +71,8 @@ describe("Activity", () => {
   it("should have a amount of Red Rocks climbed", () => {
     expect(activity.getRedRocksTimesClimbed(16, "2019/06/15")).to.equal(12.42)
   });
-
 });
 
-// For a user, a weekly view of their step count, flights of stairs climbed, 
-// and minutes active
+
 
 

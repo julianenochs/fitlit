@@ -1,10 +1,8 @@
 const chai = require("chai");
 const expect = chai.expect;
-
 const Hydration = require("../src/hydration");
 const HydrationRepository = require("../src/hydrationRepository");
 const fakeHydration = require("../data/fakeHydration");
-
 let hydrationRepository;
 
 describe("Hydration", () => {
@@ -37,8 +35,7 @@ describe("Hydration", () => {
       53,
       61
     ]);
-  });
-  
+  });  
 });
 
 
