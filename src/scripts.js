@@ -23,17 +23,18 @@ function findTodaysDate() {
 }
 
 $(document).ready(() => {
-  $('#splash-page-js').show();
-  $('#main-page-js').hide();
-  $('#header-js').hide();
-  $('#enter__button-js').click(hideSplash);
-  $('#submit-date__button').click(submitDate);
-  let date = $('#date__input-js').val();
-  let formattedDate = date.replace(/-/gi, "/");
-  let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
-  let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
-	let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
-
+    $('#splash-page-js').show();
+    $('#main-page-js').hide();
+    $('#header-js').hide();
+    $('#enter__button-js').click(hideSplash);
+    $('#submit-date__button').click(submitDate);
+    let date = $('#date__input-js').val();
+    let formattedDate = date.replace(/-/gi, "/");
+    let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
+    let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
+    let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
+    let weeklySleepChart = sleep.getHoursSleptByWeek(randomId, findTodaysDate());
+           
 	function hideSplash() {
 		$('#splash-page-js').fadeOut(2000);
 		$('#splash-page-js').hide();
