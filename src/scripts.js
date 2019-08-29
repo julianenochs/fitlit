@@ -33,7 +33,12 @@ $(document).ready(() => {
     let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
+<<<<<<< HEAD
 
+=======
+    let weeklySleepChart = sleep.getHoursSleptByWeek(randomId, findTodaysDate());
+           
+>>>>>>> 5174312f7d227354d2fec2a17c8465854e095bd2
 	function hideSplash() {
 		$('#splash-page-js').fadeOut(2000);
 		$('#splash-page-js').hide();
