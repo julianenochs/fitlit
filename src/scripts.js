@@ -33,24 +33,27 @@ $(document).ready(() => {
   let hydrationChart = hydration.getOuncesByWeek(randomId, findTodaysDate());
   let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
 	let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
-		
+
 	function hideSplash() {
 		$('#splash-page-js').fadeOut(2000);
 		$('#splash-page-js').hide();
 		$('#main-page-js').fadeIn(1000);
 		$('#header-js').show();
+    
+function submitDate() {
+    date = $('#date__input-js').val();
+    formattedDate = date.replace(/-/gi, "/");
+    hydrationChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
+    userHydrationByWeekChart.update();
+    stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
+    stepCountByWeekChart.update();
+    flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
+    flightsClimbedByWeekChart.update();
+    userSleepByWeekChart.data.datasets[0].data = sleep.getHoursSleptByWeek(randomId, formattedDate)
+    userSleepByWeekChart.update();
+}
+
 	};
-	
-	function submitDate() {
-		date = $('#date__input-js').val();
-		formattedDate = date.replace(/-/gi, "/");
-		userHydrationByWeekChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
-		userHydrationByWeekChart.update();
-		stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
-		stepCountByWeekChart.update();
-		flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
-		flightsClimbedByWeekChart.update();
-	}
 
 	//******* User Info *********
 	$('#main-date-js').text(findTodaysDate());
@@ -69,15 +72,18 @@ $(document).ready(() => {
 	$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
 	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
 
-	//********** Activity **********
-	$('#user-steps-goal__display-js').text(`Step goal reached today: ${activity.getStepGoalByDay(findTodaysDate())}!`);
-	$('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
-	$('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
-	$('#user-steps-by-mile__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
-	$('#user-redrocks-climbed').text(`Times you climbed Red Rocks this week: ${activity.getRedRocksTimesClimbed(randomId, findTodaysDate())}`);
 
-	//********** Sleep **********
-	$('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept')).val();
+  //********** Activity **********
+  $('#user-steps-goal__display-js').text(`Step goal: ${activity.getStepGoalByDay(findTodaysDate())}!`);
+  $('#user-minutes-today__display-js').text(`Minutes active today: ${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`);
+  $('#user-number-steps-today__display-js').text(`Todays step count: ${activity.getStepsPerDay(randomId, findTodaysDate())}`);
+  $('#user-steps-by-mile__display-js').text(`Todays miles: ${activity.getDistanceBasedOnStepCountAndDay(randomId, findTodaysDate())}`);
+  $('#user-redrocks-climbed').text(`Times you climbed Red Rocks this week: ${activity.getRedRocksTimesClimbed(randomId, findTodaysDate())}`);
+
+  //********** Sleep **********
+  $('#user-sleep-last-night__display-js').text(sleep.getAverageSleepInformation('hoursSlept'));
+  $('#sleep-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'hoursSlept'));
+  $('#sleep-quality-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'sleepQuality'));
 
 	//**** User vs. All users ****
 	$('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
@@ -87,36 +93,122 @@ $(document).ready(() => {
 	$('#user-average-flights-today__display-table-js').text(`${activity.getStairFlightsByDay(randomId, findTodaysDate())}`)
 	$('#all-users-average-flights-today__display-table-js').text(`${activityRepository.getAverageStairsClimbedByDayAllUsers(findTodaysDate())}`)
 
-	//********** Charts **********
-	let userHydrationByWeek = $('#hydration-by-week');
-	let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
-			type: 'bar',
-			data: {
-					labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
-					datasets: [{
-							label: "Water Drank (ounces)",
-							backgroundColor: ["#3e95cd", "#8e5ea2", "#6BBFC3", "#e8c3b9", "#c45850", "pink", "orange"],
-							data: hydrationChart,
-					}]
-			},
-			options: {
-					title: {
-							display: true,
-							text: 'Your Water Intake'
-					},
-					scales: {
-							yAxes: [{
-									ticks: {
-											beginAtZero: true
-									}
-							}]
-					},
-					responsive: true,
-					maintainAspectRatio: false,
-			}
+  // ********** Charts **********
+  let userHydrationByWeek = $('#hydration-by-week');
+  let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Water Drank (ounces)",
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+            data: hydrationChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Your Water Intake'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 
-	});
+});
 
+let stepCountByWeek = $('#step__chart');
+let stepCountByWeekChart = new Chart(stepCountByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Steps Taken Daily",
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+            data: stepCountChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Your Steps This Week'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+
+});
+
+let flightsClimbedByWeek = $('#flights-climbed__chart');
+let flightsClimbedByWeekChart = new Chart(flightsClimbedByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Flights Climbed",
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+            data: flightsClimbedChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Flights Climbed Weekly'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+});
+
+let userSleepByWeek = $('#sleep-by-week');
+let userSleepByWeekChart = new Chart(userSleepByWeek, {
+    type: 'bar',
+    data: {
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+        datasets: [{
+            label: "Hours Slept",
+            backgroundColor: ["#E102F9", "#C5FF8C", "#FFE74C", "#47CEED", "#FF631C", "#E0FF19", "#D47FFF"],
+            data: weeklySleepChart,
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Hours Slept This Week'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+    }
+
+});
+=======
 	let stepCountByWeek = $('#step__chart');
 	let stepCountByWeekChart = new Chart(stepCountByWeek, {
 			type: 'bar',

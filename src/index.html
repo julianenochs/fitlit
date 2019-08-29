@@ -29,7 +29,7 @@
       <div class="grid-item draggable">
           <label for="start">Start Date:</label>
           <input class="date__input" id="date__input-js" role="search" type="date" value="2019-07-11" min="2019-06-15" max="2019-09-22">
-          <button id="submit-date__button" name="submit-date">Submit</button>
+          <button class ="submit-date__button" id="submit-date__button" name="submit-date">Submit</button>
       </div>
         <!-- HYDRATION -->
         <section class="draggable grid-item">
@@ -40,13 +40,18 @@
           User hydration: oz drank by date...
         </section>
         <!-- SLEEP -->
-        <section class="draggable grid-item grid-item--width2">
-          <p>Average Hours Slept:</p>
-          <p id="user-sleep-last-night__display-js" > ... </p>
-        </section>
-        <section class="draggable grid-item" id="user-sleep-average__display-js">
-          User sleep: average...
-        </section>
+         <section class="draggable grid-item grid-item--width2">
+           <p>Average Hours Slept</p>
+           <p id="user-sleep-last-night__display-js"> ... </p>
+         </section>
+         <section class="draggable grid-item">
+           Hours Slept Last Night
+           <p id="sleep-last-night-js">...</p>
+         </section>
+         <section class="draggable grid-item">
+           Sleep Quality Last Night
+           <p id="sleep-quality-last-night-js">...</p>
+         </section>
 
         <!-- ACTIVITY -->
         <section class="draggable grid-item" id="user-number-steps-today__display-js">
@@ -63,9 +68,10 @@
         </section>
         <section class="draggable grid-item" id="user-redrocks-climbed">
             User activity: times up RedRocks..
-          </section>
+        </section>
+
           <!-- TABLE -->
-            <div class="grid-item draggable" id="step__chart-js">
+        <div class="grid-item draggable" id="step__chart-js">
         <table class="user-vs-all-users__display" id="user-vs-all-users__display-js">
           <tr>
             <th></th>
@@ -87,7 +93,9 @@
             <td class="user-average-flights-today__display-table" id="user-average-flights-today__display-table-js">B</td>
             <td class="all-users-average-flights-today__display-table" id="all-users-average-flights-today__display-table-js">C</td>
           </tr>
+        </table>
         </div>
+        
         <!-- CHARTS -->
         <div class="draggable weekly">
           <h2>Weekly Stats</h2>
@@ -99,6 +107,9 @@
           </div>
           <div class="draggable chart" id="stairs-climbed__chart-js">
             <canvas id="flights-climbed__chart" width="400" height="400"></canvas>
+          </div>
+          <div class="draggable chart" id="sleep-by-week__chart-js">
+            <canvas id="sleep-by-week" width="400" height="400"></canvas>
           </div>
         </div>
       </main>
