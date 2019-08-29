@@ -14,12 +14,12 @@ let activity = new Activity(userActivityInfo, user);
 
 function findTodaysDate() {
     let today = new Date();
-    console.log(today);
+    console.log(today)
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let yyyy = today.getFullYear();
-		today = yyyy + '/' + mm + '/' + dd;
-    return `${today}`;
+    today = yyyy + '/' + mm + '/' + dd;
+    return `${today}`
 }
 
 $(document).ready(() => {
@@ -35,43 +35,41 @@ $(document).ready(() => {
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
     let weeklySleepChart = sleep.getHoursSleptByWeek(randomId, findTodaysDate());
 
-	function hideSplash() {
-		$('#splash-page-js').fadeOut(2000);
-		$('#splash-page-js').hide();
-		$('#main-page-js').fadeIn(1000);
-		$('#header-js').show();
-    
-function submitDate() {
-    date = $('#date__input-js').val();
-    formattedDate = date.replace(/-/gi, "/");
-    hydrationChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
-    userHydrationByWeekChart.update();
-    stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
-    stepCountByWeekChart.update();
-    flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
-    flightsClimbedByWeekChart.update();
-    userSleepByWeekChart.data.datasets[0].data = sleep.getHoursSleptByWeek(randomId, formattedDate)
-    userSleepByWeekChart.update();
-}
-	};
+    function hideSplash() {
+        $('#splash-page-js').fadeOut(2000);
+        $('#splash-page-js').hide();
+        $('#main-page-js').fadeIn(1000);
+        $('#header-js').show();
+    }
 
-	//******* User Info *********
-	$('#main-date-js').text(findTodaysDate());
-	$('#user-name__display').text(user.name);
-	$('#user-address__display').text(user.address);
-	$('#user-email__display').text(user.email);
-	$('#user-stride__display').text(user.strideLength);
-	$('#user-step__display').text(user.dailyStepGoal);
-	$('#user-name__display').text(user.name);
-	$('#user-address__display').text(user.address);
-	$('#user-email__display').text(user.email);
-	$('#user-stride__display').text(user.strideLength);
-	$('#user-step__display').text(user.dailyStepGoal);
+    function submitDate() {
+        date = $('#date__input-js').val();
+        formattedDate = date.replace(/-/gi, "/");
+        hydrationChart.data.datasets[0].data = hydration.getOuncesByWeek(randomId, formattedDate);
+        userHydrationByWeekChart.update();
+        stepCountByWeekChart.data.datasets[0].data = activity.getWeeklyStepCount(randomId, formattedDate);
+        stepCountByWeekChart.update();
+        flightsClimbedByWeekChart.data.datasets[0].data = activity.getWeeklyFlightsClimbed(randomId, formattedDate);
+        flightsClimbedByWeekChart.update();
+        userSleepByWeekChart.data.datasets[0].data = sleep.getHoursSleptByWeek(randomId, formattedDate)
+        userSleepByWeekChart.update();
+    }
 
-	//********** Hydration **********
-	$('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
-	$('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
+    $('#main-date-js').text(findTodaysDate());
+    $('#user-name__display').text(user.name);
+    $('#user-address__display').text(user.address);
+    $('#user-email__display').text(user.email);
+    $('#user-stride__display').text(user.strideLength);
+    $('#user-step__display').text(user.dailyStepGoal);
+    $('#user-name__display').text(user.name);
+    $('#user-address__display').text(user.address);
+    $('#user-email__display').text(user.email);
+    $('#user-stride__display').text(user.strideLength);
+    $('#user-step__display').text(user.dailyStepGoal);
 
+    //********** Hydration **********
+    $('#user-hydration-all-time__display-js').text(`Average ounces consumed: ${hydration.getAverageOuncesPerDayAllTime()}oz`);
+    $('#user-hydration-by-date__display-js').text(`Ounces consumed today: ${hydration.getOuncesByDate(randomId, findTodaysDate())}oz`);
 
     //********** Activity **********
     $('#user-steps-goal__display-js').text(`Step goal: ${activity.getStepGoalByDay(findTodaysDate())}!`);
@@ -85,15 +83,16 @@ function submitDate() {
     $('#sleep-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'hoursSlept'));
     $('#sleep-quality-last-night-js').text(sleep.getSleepDataByDate(randomId, findTodaysDate(), 'sleepQuality'));
 
-	//**** User vs. All users ****
-	$('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
-	$('#all-users-average-step-today__display-tabl-js').text(`${activityRepository.getAverageStepsTakenByDayAllUsers(findTodaysDate())}`)
-	$('#user-minutes-active-today__display-table-js').text(`${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`)
-	$('#all-users-average-minutes-active-today__display-table-js').text(`${activityRepository.getAverageMinutesActiveByDayAllUsers(findTodaysDate())}`)
-	$('#user-average-flights-today__display-table-js').text(`${activity.getStairFlightsByDay(randomId, findTodaysDate())}`)
-	$('#all-users-average-flights-today__display-table-js').text(`${activityRepository.getAverageStairsClimbedByDayAllUsers(findTodaysDate())}`)
+    // //****** User vs. All users *******
+    $('#user-number-steps-today__display-table-js').text(`${activity.getStepsPerDay(randomId, findTodaysDate())}`)
+    $('#all-users-average-step-today__display-tabl-js').text(`${activityRepository.getAverageStepsTakenByDayAllUsers(findTodaysDate())}`)
+    $('#user-minutes-active-today__display-table-js').text(`${activity.getMinutesActivePerDayByDate(randomId, findTodaysDate())}`)
+    $('#all-users-average-minutes-active-today__display-table-js').text(`${activityRepository.getAverageMinutesActiveByDayAllUsers(findTodaysDate())}`)
+    $('#user-average-flights-today__display-table-js').text(`${activity.getStairFlightsByDay(randomId, findTodaysDate())}`)
+    $('#all-users-average-flights-today__display-table-js').text(`${activityRepository.getAverageStairsClimbedByDayAllUsers(findTodaysDate())}`)
 
-    // ********** Charts **********
+
+    //********** Charts **********
     let userHydrationByWeek = $('#hydration-by-week');
     let userHydrationByWeekChart = new Chart(userHydrationByWeek, {
         type: 'bar',
@@ -206,5 +205,6 @@ function submitDate() {
             responsive: true,
             maintainAspectRatio: false,
         }
+
     });
 });
