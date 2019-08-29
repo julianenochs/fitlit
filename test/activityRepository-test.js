@@ -1,11 +1,8 @@
 const chai = require("chai");
 const expect = chai.expect;
-
 const ActivityRepositorty = require("../src/activityRepository");
 const fakeActivity = require("../data/fakeActivity");
-
 let activityRepository;
-let allActivity;
 let user16;
 
 describe("Activity Repository", () => {
@@ -253,8 +250,7 @@ describe("Activity Repository", () => {
 
   it("should have an average minutes active for all users", () => {
     expect(activityRepository.getAverageMinutesActiveByDayAllUsers("2019/06/15")).to.equal(94.29)
-  })
-
+  });
 });
 
 

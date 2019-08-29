@@ -1,9 +1,7 @@
 const chai = require("chai");
 const expect = chai.expect;
-
 const HydrationRepository = require("../src/hydrationRepository");
 const fakeHydration = require("../data/fakeHydration");
-
 let hydrationRepository;
 let allHydration;
 let user16;
@@ -43,7 +41,6 @@ describe("Hydration Repository", () => {
       { userID: 16, date: '2019/06/20', numOunces: 53 },
       { userID: 16, date: '2019/06/21', numOunces: 61 }
     ];
-
     user16 = [
     { userID: 16, date: '2019/06/15', numOunces: 40 },
     { userID: 16, date: '2019/06/16', numOunces: 55 },
@@ -65,5 +62,4 @@ describe("Hydration Repository", () => {
   it("should be able to get a user", () => {
     expect(hydrationRepository.getUserById(16)).to.eql(user16)
   });
-
 });

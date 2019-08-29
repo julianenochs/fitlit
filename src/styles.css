@@ -43,14 +43,14 @@
 }
 
 .enter__button {
-    height: 45px;
     border-radius: 20px;
-    color: white;
     background-color: #FCDE2A;
-    margin: 10px;
-    font-family: 'Quantico',
-        sans-serif;
+    color: white;
     font-size: 1.3em;
+    font-family: 'Quantico',
+    sans-serif;
+    height: 45px;
+    margin: 10px;
     margin-left: 600px;
     width: 20%;
 }
@@ -58,8 +58,8 @@
 /* MAIN PAGE */
 body {
     display: grid;
-    margin: 0px;
     height: 100vh;
+    margin: 0px;
 }
 
 main {
@@ -82,11 +82,11 @@ main {
 .header {
     background-color: #69188E;
     border-bottom: #1ADFED solid 2px;
-    filter: hue-rotate(45deg);
     color: #FE247A;
+    filter: hue-rotate(45deg);
     font-family: 'Bungee Shade', cursive;
-    text-align: center;
     font-size: 2em;
+    text-align: center;
     margin-top: -43px;
 }
 
