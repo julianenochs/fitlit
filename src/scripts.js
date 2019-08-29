@@ -23,8 +23,6 @@ function findTodaysDate() {
 }
 
 $(document).ready(() => {
-    //  var audio = new Audio('images/gymnasty.mp3');
-    //  audio.play();
     $('#splash-page-js').show();
     $('#main-page-js').hide();
     $('#header-js').hide();
