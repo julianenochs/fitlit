@@ -34,21 +34,6 @@ $(document).ready(() => {
     let stepCountChart = activity.getWeeklyStepCount(randomId, findTodaysDate());
     let flightsClimbedChart = activity.getWeeklyFlightsClimbed(randomId, findTodaysDate());
     let weeklySleepChart = sleep.getHoursSleptByWeek(randomId, findTodaysDate());
-
-    // $('.grid').packery({
-        //     itemSelector: '.grid-item',
-        //     gutter: 40,
-        //     columnWidth: 100,
-        // });
-        
-        // var $draggable = $('.draggable').draggabilly({
-            //     axis: 'x'
-            // $draggable.draggabilly('enable')
-            
-            // $grid.find('.grid-item').each(function (i, gridItem) {
-                // let draggie = new Draggabilly(gridItem)
-                // $grid.packery('bindDraggabillyEvents', draggie)
-                // });
                 
 	function hideSplash() {
 		$('#splash-page-js').fadeOut(2000);
